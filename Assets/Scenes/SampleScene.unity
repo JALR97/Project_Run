@@ -183,6 +183,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -282,6 +290,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
       propertyPath: m_Name
       value: track-road-wide-corner-large-ramp (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -383,6 +399,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -477,6 +501,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -682,6 +714,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight-hill-end
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfa1ae52f93261544b8cd6c8353eb4f8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfa1ae52f93261544b8cd6c8353eb4f8, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -778,6 +818,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight-hill-beginning
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d84094ac57aa43b40af4daca371d9b87, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d84094ac57aa43b40af4daca371d9b87, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -818,6 +866,52 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8210619523322170615, guid: d84094ac57aa43b40af4daca371d9b87, type: 3}
+--- !u!1 &222371229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 222371231}
+  - component: {fileID: 222371230}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &222371230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222371229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e99e497d7eb374c903ce49700cb209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: 0
+  playerState: 0
+--- !u!4 &222371231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222371229}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.597, y: 1.16, z: 42.744}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &226196503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -873,6 +967,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
       propertyPath: m_Name
       value: track-road-wide-curve
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -970,6 +1072,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-large (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c22c6ea14396d984c88556f1033e30dc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c22c6ea14396d984c88556f1033e30dc, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1065,6 +1175,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e02398e06b963884fb2142dbb50c5f2d, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete-half
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e02398e06b963884fb2142dbb50c5f2d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e02398e06b963884fb2142dbb50c5f2d, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1162,6 +1280,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1256,6 +1382,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
       propertyPath: m_Name
       value: track-road-wide-corner-large-ramp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1353,6 +1487,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete-half (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e02398e06b963884fb2142dbb50c5f2d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e02398e06b963884fb2142dbb50c5f2d, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1448,6 +1590,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1545,6 +1695,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-small (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bdc100ec60377045a15c298ab72d04c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bdc100ec60377045a15c298ab72d04c, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1640,6 +1798,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
       propertyPath: m_Name
       value: track-road-wide-curve (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1768,8 +1934,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.14971419, y: 0.5632246, z: 0.10463655, w: 0.80586284}
-  m_LocalPosition: {x: 1.423132, y: 1.04, z: 42.314426}
+  m_LocalRotation: {x: -0.14971417, y: 0.5632246, z: 0.10463654, w: 0.80586284}
+  m_LocalPosition: {x: 1.3641322, y: 0.974, z: 42.270428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1907,6 +2073,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2001,6 +2175,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2097,6 +2279,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2258,6 +2448,59 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &426318621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 426318622}
+  - component: {fileID: 426318623}
+  m_Layer: 0
+  m_Name: GroundedPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &426318622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426318621}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.1839, z: 0}
+  m_LocalScale: {x: 0.22454414, y: 0.04721265, z: 0.22454414}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1878252758}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &426318623
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426318621}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &426897864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2313,6 +2556,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2409,6 +2660,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2503,6 +2762,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d84094ac57aa43b40af4daca371d9b87, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-hill-beginning (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d84094ac57aa43b40af4daca371d9b87, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d84094ac57aa43b40af4daca371d9b87, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2818,6 +3085,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2912,6 +3187,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3009,6 +3292,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight-hill-end
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfa1ae52f93261544b8cd6c8353eb4f8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfa1ae52f93261544b8cd6c8353eb4f8, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3105,6 +3396,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3199,6 +3498,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dfa1ae52f93261544b8cd6c8353eb4f8, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-hill-end (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfa1ae52f93261544b8cd6c8353eb4f8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfa1ae52f93261544b8cd6c8353eb4f8, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3296,6 +3603,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3392,6 +3707,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3486,6 +3809,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3582,6 +3913,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3676,6 +4015,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3776,6 +4123,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-large-ramp (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3872,6 +4227,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3966,6 +4329,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4062,6 +4433,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-small (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bdc100ec60377045a15c298ab72d04c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bdc100ec60377045a15c298ab72d04c, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4113,7 +4492,6 @@ GameObject:
   - component: {fileID: 815539518}
   - component: {fileID: 815539521}
   - component: {fileID: 815539520}
-  - component: {fileID: 815539519}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -4136,27 +4514,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1051118547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &815539519
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 815539517}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &815539520
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4265,6 +4622,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e98333fe45980db4883b5d257b49ccde, type: 3}
       propertyPath: m_Name
       value: track-road-wide (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e98333fe45980db4883b5d257b49ccde, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e98333fe45980db4883b5d257b49ccde, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4411,6 +4776,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4505,6 +4878,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4602,6 +4983,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4696,6 +5085,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4792,6 +5189,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
       propertyPath: m_Name
       value: track-road-wide-corner-large-ramp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4901,6 +5306,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4996,6 +5409,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5115,14 +5536,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051118542}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2926906, y: 0.2926906, z: 0.2926906}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 815539518}
   m_Father: {fileID: 1878252758}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &1053901674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5178,6 +5599,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5274,6 +5703,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5368,6 +5805,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5464,6 +5909,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5558,6 +6011,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
       propertyPath: m_Name
       value: track-road-wide-curve (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5659,6 +6120,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-large-ramp (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5754,6 +6223,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5855,6 +6332,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5949,6 +6434,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d84094ac57aa43b40af4daca371d9b87, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-hill-beginning (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d84094ac57aa43b40af4daca371d9b87, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d84094ac57aa43b40af4daca371d9b87, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6045,6 +6538,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6150,6 +6651,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-curve
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6249,6 +6758,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6350,6 +6867,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-curve (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6446,6 +6971,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6541,6 +7074,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6589,9 +7130,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1320964034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Track
-  m_TagString: Untagged
+  m_TagString: Track
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6756,6 +7297,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6852,6 +7401,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-large (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c22c6ea14396d984c88556f1033e30dc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c22c6ea14396d984c88556f1033e30dc, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6947,6 +7504,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7226,8 +7791,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359542038}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.14971417, y: 0.56322455, z: 0.10463654, w: 0.8058629}
-  m_LocalPosition: {x: 1.423132, y: 1.04, z: 42.314426}
+  m_LocalRotation: {x: -0.14971417, y: 0.56322455, z: 0.10463653, w: 0.8058629}
+  m_LocalPosition: {x: 1.3641322, y: 0.974, z: 42.270428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7300,6 +7865,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7397,6 +7970,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e98333fe45980db4883b5d257b49ccde, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e98333fe45980db4883b5d257b49ccde, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7493,6 +8074,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-small (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bdc100ec60377045a15c298ab72d04c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bdc100ec60377045a15c298ab72d04c, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7588,6 +8177,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
       propertyPath: m_Name
       value: track-road-wide-curve (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7689,6 +8286,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7784,6 +8389,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e02398e06b963884fb2142dbb50c5f2d, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete-half
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e02398e06b963884fb2142dbb50c5f2d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e02398e06b963884fb2142dbb50c5f2d, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7881,6 +8494,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-small
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bdc100ec60377045a15c298ab72d04c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bdc100ec60377045a15c298ab72d04c, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7977,6 +8598,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8071,6 +8700,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8167,6 +8804,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-large
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c22c6ea14396d984c88556f1033e30dc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c22c6ea14396d984c88556f1033e30dc, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8219,7 +8864,7 @@ GameObject:
   - component: {fileID: 1462268532}
   - component: {fileID: 1462268531}
   - component: {fileID: 1462268530}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8372,6 +9017,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete-half (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e02398e06b963884fb2142dbb50c5f2d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e02398e06b963884fb2142dbb50c5f2d, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8467,6 +9120,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8568,6 +9229,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8668,6 +9337,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8762,6 +9439,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 947f7b6f50c2a50499a7a601a395d83d, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-bend
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 947f7b6f50c2a50499a7a601a395d83d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 947f7b6f50c2a50499a7a601a395d83d, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8859,6 +9544,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8954,6 +9647,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9081,6 +9782,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9175,6 +9884,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
       propertyPath: m_Name
       value: track-road-wide-corner-small-ramp (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ae32f175dbd56d4d92a1a5c2080c92e, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9271,6 +9988,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9371,6 +10096,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9421,6 +10154,7 @@ GameObject:
   - component: {fileID: 1878252758}
   - component: {fileID: 1878252760}
   - component: {fileID: 1878252759}
+  - component: {fileID: 1878252761}
   m_Layer: 0
   m_Name: TP Player
   m_TagString: Untagged
@@ -9437,12 +10171,13 @@ Transform:
   m_GameObject: {fileID: 1878252757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.31789088, z: -0, w: 0.9481273}
-  m_LocalPosition: {x: 2.597, y: 1.16, z: 42.744}
+  m_LocalPosition: {x: 2.538, y: 1.094, z: 42.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1734675880}
   - {fileID: 1051118547}
+  - {fileID: 426318622}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -37.071, z: 0}
 --- !u!54 &1878252759
@@ -9467,7 +10202,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
@@ -9495,6 +10230,27 @@ CapsuleCollider:
   m_Height: 0.58
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1878252761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878252757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a76d88f55d29344697cccd09fa1d705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 330585546}
+  groundedPoint: {fileID: 426318622}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  speed: 2
+  gravity: 2
+  groundRadius: 0.12
+  turnSmoothTime: 0.05
 --- !u!1001 &1973367665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9554,6 +10310,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
       propertyPath: m_Name
       value: track-road-wide-curve (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a6de6c0ff8d2f64f996da10cf220190, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9651,6 +10415,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9745,6 +10517,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9845,6 +10625,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-large-ramp (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b76a5fca7673e1a4499d28851e11c7da, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9940,6 +10728,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
       propertyPath: m_Name
       value: track-road-wide-straight-hill-complete (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc29a6abe4201d14891270dc6cb504d1, type: 3}
+      propertyPath: m_TagString
+      value: Track
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10037,6 +10833,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-corner-small (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bdc100ec60377045a15c298ab72d04c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4bdc100ec60377045a15c298ab72d04c, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10133,6 +10937,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: track-road-wide-straight (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 400239f7da280264a904873568eb8005, type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10176,6 +10988,7 @@ BoxCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 222371231}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
