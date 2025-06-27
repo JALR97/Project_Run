@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 //-----------------//Variables//-----------------//
 //Process variables - private
     private bool _isGrounded = false;
+    private Vector3 adjustedDirection;
 
 //Balance variables - serialized 
     [SerializeField] private float speed;
@@ -64,7 +65,14 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             
             Vector3 targetDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            transform.Translate(targetDirection * (speed * Time.deltaTime), Space.World);
+            adjustedDirection = slopeRotation * targetDirection;
+
+            /*if (adjustedDirection.y < 0)
+            {
+                //Let's not use this for noe   
+            }*/
+            
+            transform.Translate(adjustedDirection * (speed * Time.deltaTime), Space.World);
         }
     }
 
@@ -73,6 +81,9 @@ public class PlayerController : MonoBehaviour
         //Ground check gizmo
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundedPoint.position, groundRadius);
+        
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + adjustedDirection);
     }
 
 //Inner process - private
