@@ -12441,6 +12441,7 @@ MonoBehaviour:
     m_Bits: 128
   _splineContainer: {fileID: 584647415}
   speed: 2
+  strafeSpeed: 200
   gravity: 1
   groundRadius: 0.12
   turnSmoothTime: 0.05

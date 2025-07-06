@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     
 //Balance variables - serialized 
     [SerializeField] private float speed;
+    [SerializeField] private float strafeSpeed;
     [SerializeField] private float gravity;
     [SerializeField] private float groundRadius = 0.2f;
     [SerializeField] private float turnSmoothTime = 0.1f;
@@ -72,39 +74,41 @@ public class PlayerController : MonoBehaviour
         
         //Movement logic
         Vector3 targetDirection = Vector3.zero;
+        //Behavior when autopilot is on aka running nonstop
         if (_auto) {
-            //spline t
             var localPoint = _splineContainer.transform.InverseTransformPoint(transform.position);
             SplineUtility.GetNearestPoint(_splineContainer.Spline, localPoint, out _, out var ratio, 100, 5);
             
             Vector3 tangent = _splineContainer.Spline.EvaluateTangent(ratio);
-            Vector3 normalizedTangent = tangent.normalized;
-            railDirection = _splineContainer.transform.TransformDirection(normalizedTangent);
-            railDirection.y = 0;
+            Vector3 normalizedTangent = tangent.normalized; 
+            railDirection = _splineContainer.transform.TransformDirection(normalizedTangent); //Direction of the spline
+            railDirection.y = 0; 
             targetDirection = railDirection;
             
+            //Strafing
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            if (horizontal > 0f) {
+                targetDirection += Vector3.Cross(Vector3.up, targetDirection) * (strafeSpeed * Time.deltaTime);
+            }else if (horizontal < 0f) {
+                targetDirection += Vector3.Cross(targetDirection, Vector3.up) * (strafeSpeed * Time.deltaTime);
+            }
+            
             //Rotation
-            float targetAngle = Mathf.Atan2(1, 0) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(0, 1) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothSpeed, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             
-            Debug.Log("inside auto");
         }else {
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothSpeed, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             targetDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            Debug.Log("inside not auto");
         }
         
         if (inputDirection.magnitude >= 0.1f || _auto) {
             
             adjustedDirection = slopeRotation * targetDirection;
-
-            /*if (adjustedDirection.y < 0)
-            {
-                //Let's not use this for noe   
-            }*/
+            //adjustedDirection += strafeSpeed;
             
             transform.Translate(adjustedDirection * (speed * Time.deltaTime), Space.World);
         }
