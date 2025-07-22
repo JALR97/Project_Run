@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour {
     public static event Action<PlayerState> OnPlayerStateChange; 
     public enum PlayerState {
         Inactive,
+        Walking,
         Running,
         LookingAround,
         Autopilot
@@ -86,6 +87,8 @@ public class GameManager : MonoBehaviour {
         switch (newState)
         {
             case PlayerState.Inactive:
+                break;
+            case PlayerState.Walking:
                 break;
             case PlayerState.LookingAround:
                 break;

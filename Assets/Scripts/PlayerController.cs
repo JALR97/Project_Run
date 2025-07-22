@@ -1,6 +1,9 @@
+using System;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityEngine.Splines;
 
@@ -25,6 +28,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundedPoint;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private SplineContainer _splineContainer;
+    
+    //Inputs
+    [SerializeField] private InputActionReference movementAction;
+    [SerializeField] private InputActionReference speedAction;
+    [SerializeField] private InputActionReference modeSwitchAction;
 
 //-----------------//Variables//-----------------//
 //Process variables - private
@@ -47,6 +55,16 @@ public class PlayerController : MonoBehaviour
 
 //-----------------//Functions//-----------------//
 //Built-in
+    private void OnEnable() {
+        modeSwitchAction.action.started += ModeSwitch;
+        GameManager.OnPlayerStateChange += StateSwitch;
+    }
+
+    private void OnDisable() {
+        modeSwitchAction.action.started -= ModeSwitch;
+        GameManager.OnPlayerStateChange -= StateSwitch;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) {
@@ -62,9 +80,11 @@ public class PlayerController : MonoBehaviour
         //Player input
         Vector3 inputDirection = Vector3.zero;
         if (!_auto) {
-            float horizontal = Input.GetAxisRaw("Horizontal");
+            var input2D = movementAction.action.ReadValue<Vector2>();
+            inputDirection = new Vector3(input2D.x, 0f, input2D.y);
+            /*float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
-            inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
+            inputDirection = new Vector3(horizontal, 0f, vertical).normalized;*/
         }
         
         //Slope logic
@@ -112,9 +132,6 @@ public class PlayerController : MonoBehaviour
             
             transform.Translate(adjustedDirection * (speed * Time.deltaTime), Space.World);
         }
-
-        
-        
     }
 
     private void OnDrawGizmos()
@@ -131,8 +148,14 @@ public class PlayerController : MonoBehaviour
     }
 
 //Inner process - private
+    //**Input functions
+    private void ModeSwitch(InputAction.CallbackContext context) {
+        Debug.Log("Switch Mode");
+    }
 
-
+    private void StateSwitch(GameManager.PlayerState playerState) {
+        Debug.Log("Fack");
+    }
 //External interaction - public
 
 
