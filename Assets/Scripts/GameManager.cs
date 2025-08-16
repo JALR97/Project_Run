@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour {
     ///Singleton class to manage the game on a high level
     public static GameManager Instance;
     public GameState gameState;
-    public PlayerState playerState;
     
     public static event Action<GameState> OnGameStateChange; 
     public enum GameState {
@@ -30,15 +29,6 @@ public class GameManager : MonoBehaviour {
         Game,
         Paused,
         GameOver
-    }
-    
-    public static event Action<PlayerState> OnPlayerStateChange; 
-    public enum PlayerState {
-        Inactive,
-        Walking,
-        Running,
-        LookingAround,
-        Autopilot
     }
     //**    ---Components---    **//
 
@@ -79,25 +69,5 @@ public class GameManager : MonoBehaviour {
                 break;
         }
         OnGameStateChange?.Invoke(newState);
-    }
-
-    public void SwitchPlayerState(PlayerState newState)
-    {
-        playerState = newState;
-        switch (newState)
-        {
-            case PlayerState.Inactive:
-                break;
-            case PlayerState.Walking:
-                break;
-            case PlayerState.LookingAround:
-                break;
-            case PlayerState.Running:
-                break;
-            case PlayerState.Autopilot:
-                break;
-        }
-
-        OnPlayerStateChange?.Invoke(newState);
     }
 }

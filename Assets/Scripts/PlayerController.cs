@@ -10,24 +10,28 @@ using UnityEngine.Splines;
 public class PlayerController : MonoBehaviour
 {
     //-----------------//Data structures//-----------------//
-//enums
+    public enum PlayerState {
+        Inactive,
+        Walking,
+        Running
+    }
+    public enum RunningMode {
+        Control,
+        Attention,
+        Information
+    }
 
-
-//structs
-
-
-//-----------------//Components//-----------------//
-//Internal Components
-
-
-//Prefabs
-
-
-//External References
+    //-----------------//Components//-----------------//
+    //Internal Components
+                                       
+                                       
+    //External References              
     [SerializeField] private Transform cam;
     [SerializeField] private Transform groundedPoint;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private SplineContainer _splineContainer;
+    
+    [SerializeField] private GameObject _modeSwitchUI;
     
     //Inputs
     [SerializeField] private InputActionReference movementAction;
@@ -36,41 +40,41 @@ public class PlayerController : MonoBehaviour
 
 //-----------------//Variables//-----------------//
 //Process variables - private
+    //movement stuff
     private bool _isGrounded = false;
     private Vector3 adjustedDirection;
-    private bool _auto = false;
     private Vector3 railDirection;
     private float _turnSmoothSpeed;
     private float t = 0;
     
-//Balance variables - serialized 
+    //state stuff
+    private PlayerState playerState;
+    private RunningMode runningMode;
+    private bool _auto = false;
+    
+    
+    //Balance variables - serialized 
     [SerializeField] private float speed;
     [SerializeField] private float strafeSpeed;
     [SerializeField] private float gravity;
     [SerializeField] private float groundRadius = 0.2f;
     [SerializeField] private float turnSmoothTime = 0.1f;
 
-//Public properties - private set "Name { get; private set; }"
+    //Public properties - private set "Name { get; private set; }"
 
 
-//-----------------//Functions//-----------------//
-//Built-in
+    //-----------------//Functions//-----------------//
+    //Built-in
     private void OnEnable() {
-        modeSwitchAction.action.started += ModeSwitch;
-        GameManager.OnPlayerStateChange += StateSwitch;
+        modeSwitchAction.action.started += ModeSwitchUI;
     }
 
     private void OnDisable() {
-        modeSwitchAction.action.started -= ModeSwitch;
-        GameManager.OnPlayerStateChange -= StateSwitch;
+        modeSwitchAction.action.started -= ModeSwitchUI;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) {
-            _auto = !_auto;
-        }
-        
         //Ground check
         _isGrounded = Physics.CheckSphere(groundedPoint.position, groundRadius, groundLayer);
         if (!_isGrounded)
@@ -147,16 +151,40 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + railDirection * 2f);
     }
 
-//Inner process - private
-    //**Input functions
-    private void ModeSwitch(InputAction.CallbackContext context) {
-        Debug.Log("Switch Mode");
+    //Inner process - private
+    private void ModeSwitchUI(InputAction.CallbackContext callbackContext) {
+        _modeSwitchUI.SetActive(true);
     }
-
-    private void StateSwitch(GameManager.PlayerState playerState) {
-        Debug.Log("Fack");
+    
+    //External interaction - public
+    public void SwitchState(PlayerState newState)
+    {
+        playerState = newState;
+        switch (newState)
+        {
+            case PlayerState.Inactive:
+                break;
+            case PlayerState.Walking:
+                _auto = false;
+                break;
+            case PlayerState.Running:
+                _auto = true;
+                SwitchMode(RunningMode.Control);
+                break;
+        }
     }
-//External interaction - public
-
+    public void SwitchMode(RunningMode newMode)
+    {
+        runningMode = newMode;
+        switch (newMode)
+        {
+            case RunningMode.Control:
+                break;
+            case RunningMode.Attention:
+                break;
+            case RunningMode.Information:
+                break;
+        }
+    }
 
 }

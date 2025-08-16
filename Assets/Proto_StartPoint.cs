@@ -14,7 +14,8 @@ public class Proto_StartPoint : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
-            GameManager.Instance.SwitchPlayerState(GameManager.PlayerState.Running);
+            other.GetComponent<PlayerController>().SwitchState(PlayerController.PlayerState.Running);
+            //fade Animation
             Destroy(gameObject);
         }
     }
