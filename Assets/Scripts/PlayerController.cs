@@ -48,9 +48,8 @@ public class PlayerController : MonoBehaviour
     private float t = 0;
     
     //state stuff
-    private PlayerState playerState;
+    private PlayerState playerState = PlayerState.Walking;
     private RunningMode runningMode;
-    private bool _auto = false;
     
     
     //Balance variables - serialized 
@@ -66,11 +65,11 @@ public class PlayerController : MonoBehaviour
     //-----------------//Functions//-----------------//
     //Built-in
     private void OnEnable() {
-        modeSwitchAction.action.started += ModeSwitchUI;
+        modeSwitchAction.action.performed += ModeSwitchUI;
     }
 
     private void OnDisable() {
-        modeSwitchAction.action.started -= ModeSwitchUI;
+        modeSwitchAction.action.performed -= ModeSwitchUI;
     }
 
     void Update()
@@ -83,7 +82,7 @@ public class PlayerController : MonoBehaviour
         }
         //Player input
         Vector3 inputDirection = Vector3.zero;
-        if (!_auto) {
+        if (playerState == PlayerState.Walking) {
             var input2D = movementAction.action.ReadValue<Vector2>();
             inputDirection = new Vector3(input2D.x, 0f, input2D.y);
             /*float horizontal = Input.GetAxisRaw("Horizontal");
@@ -99,7 +98,7 @@ public class PlayerController : MonoBehaviour
         //Movement logic
         Vector3 targetDirection = Vector3.zero;
         //Behavior when autopilot is on aka running nonstop
-        if (_auto) {
+        if (playerState == PlayerState.Running) {
             var localPoint = _splineContainer.transform.InverseTransformPoint(transform.position);
             SplineUtility.GetNearestPoint(_splineContainer.Spline, localPoint, out _, out var ratio, 100, 5);
             
@@ -117,19 +116,21 @@ public class PlayerController : MonoBehaviour
                 targetDirection += Vector3.Cross(targetDirection, Vector3.up) * (strafeSpeed * Time.deltaTime);
             }
             
-            //Rotation
-            float targetAngle = Mathf.Atan2(0, 1) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            //rotation from movement
+            float targetAngle = Mathf.Atan2(railDirection.x, railDirection.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothSpeed, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             
         }else {
+            //Rotation from camera and input - Walking
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothSpeed, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             targetDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
         
-        if (inputDirection.magnitude >= 0.1f || _auto) {
+        //Actual translation part
+        if (inputDirection.magnitude >= 0.1f || playerState == PlayerState.Running) {
             
             adjustedDirection = slopeRotation * targetDirection;
             //adjustedDirection += strafeSpeed;
@@ -153,7 +154,9 @@ public class PlayerController : MonoBehaviour
 
     //Inner process - private
     private void ModeSwitchUI(InputAction.CallbackContext callbackContext) {
-        _modeSwitchUI.SetActive(true);
+        if (playerState == PlayerState.Running) {
+            _modeSwitchUI.SetActive(true);    
+        }
     }
     
     //External interaction - public
@@ -163,13 +166,14 @@ public class PlayerController : MonoBehaviour
         switch (newState)
         {
             case PlayerState.Inactive:
+                
                 break;
             case PlayerState.Walking:
-                _auto = false;
+                GameManager.Instance.SwitchCam();
                 break;
             case PlayerState.Running:
-                _auto = true;
                 SwitchMode(RunningMode.Control);
+                GameManager.Instance.SwitchCam();
                 break;
         }
     }
@@ -179,10 +183,13 @@ public class PlayerController : MonoBehaviour
         switch (newMode)
         {
             case RunningMode.Control:
+                Debug.Log("Mode:Control");
                 break;
             case RunningMode.Attention:
+                Debug.Log("Mode:Attention");
                 break;
             case RunningMode.Information:
+                Debug.Log("Mode:Info");
                 break;
         }
     }

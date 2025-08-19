@@ -70,4 +70,21 @@ public class GameManager : MonoBehaviour {
         }
         OnGameStateChange?.Invoke(newState);
     }
+    
+    //Camera switching
+    [SerializeField] private GameObject freelookCam;
+    [SerializeField] private GameObject fixedCam;
+    private bool _fixedCam = false;
+    public void SwitchCam (){
+        if (_fixedCam) {
+            freelookCam.SetActive(true);
+            fixedCam.SetActive(false);
+            _fixedCam = false;
+        }
+        else {
+            freelookCam.SetActive(false);
+            fixedCam.SetActive(true);
+            _fixedCam = true;
+        }
+    }
 }
