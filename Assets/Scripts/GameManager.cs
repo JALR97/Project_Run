@@ -72,19 +72,29 @@ public class GameManager : MonoBehaviour {
     }
     
     //Camera switching
-    [SerializeField] private GameObject freelookCam;
-    [SerializeField] private GameObject fixedCam;
-    private bool _fixedCam = false;
-    public void SwitchCam (){
-        if (_fixedCam) {
-            freelookCam.SetActive(true);
-            fixedCam.SetActive(false);
-            _fixedCam = false;
-        }
-        else {
-            freelookCam.SetActive(false);
-            fixedCam.SetActive(true);
-            _fixedCam = true;
+    public enum Cameras {
+        walking,
+        rail,
+        attention
+    }
+    [SerializeField] private GameObject walkingCam;
+    [SerializeField] private GameObject railCam;
+    [SerializeField] private GameObject attentionCam;
+    public void SwitchCam (Cameras camID){
+        walkingCam.SetActive(false);
+        railCam.SetActive(false);
+        attentionCam.SetActive(false);
+        
+        switch (camID) {
+            case Cameras.walking:
+                walkingCam.SetActive(true);
+                break;
+            case Cameras.rail:
+                railCam.SetActive(true);
+                break;
+            case Cameras.attention:
+                attentionCam.SetActive(true);
+                break;
         }
     }
 }

@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private GameObject _modeSwitchUI;
     
+    [SerializeField] private ResourceEngine engine;
+    
     //Inputs
     [SerializeField] private InputActionReference movementAction;
     [SerializeField] private InputActionReference speedAction;
@@ -109,20 +111,24 @@ public class PlayerController : MonoBehaviour
             targetDirection = railDirection;
             
             //Strafing
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            if (horizontal > 0f) {
-                targetDirection += Vector3.Cross(Vector3.up, targetDirection) * (strafeSpeed * Time.deltaTime);
-            }else if (horizontal < 0f) {
-                targetDirection += Vector3.Cross(targetDirection, Vector3.up) * (strafeSpeed * Time.deltaTime);
+            if (runningMode == RunningMode.Control) {
+                float horizontal = Input.GetAxisRaw("Horizontal");
+                if (horizontal > 0f) {
+                    targetDirection += Vector3.Cross(Vector3.up, targetDirection) /* (strafeSpeed * Time.deltaTime)*/;
+                    targetDirection.Normalize();
+                }else if (horizontal < 0f) {
+                    targetDirection += Vector3.Cross(targetDirection, Vector3.up) /* (strafeSpeed * Time.deltaTime)*/;
+                    targetDirection.Normalize();
+                }
             }
             
-            //rotation from movement
+            //rotation from rail movement
             float targetAngle = Mathf.Atan2(railDirection.x, railDirection.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothSpeed, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             
         }else {
-            //Rotation from camera and input - Walking
+            //Rotation from camera and WASD input - Walking
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothSpeed, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -135,7 +141,7 @@ public class PlayerController : MonoBehaviour
             adjustedDirection = slopeRotation * targetDirection;
             //adjustedDirection += strafeSpeed;
             
-            transform.Translate(adjustedDirection * (speed * Time.deltaTime), Space.World);
+            transform.Translate(adjustedDirection * (engine._realSpeed * Time.deltaTime), Space.World);
         }
     }
 
@@ -169,11 +175,11 @@ public class PlayerController : MonoBehaviour
                 
                 break;
             case PlayerState.Walking:
-                GameManager.Instance.SwitchCam();
+                GameManager.Instance.SwitchCam(GameManager.Cameras.walking);
                 break;
             case PlayerState.Running:
                 SwitchMode(RunningMode.Control);
-                GameManager.Instance.SwitchCam();
+                GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
                 break;
         }
     }
@@ -183,12 +189,15 @@ public class PlayerController : MonoBehaviour
         switch (newMode)
         {
             case RunningMode.Control:
+                GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
                 Debug.Log("Mode:Control");
                 break;
             case RunningMode.Attention:
+                GameManager.Instance.SwitchCam(GameManager.Cameras.attention);
                 Debug.Log("Mode:Attention");
                 break;
             case RunningMode.Information:
+                GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
                 Debug.Log("Mode:Info");
                 break;
         }
