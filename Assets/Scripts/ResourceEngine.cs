@@ -34,6 +34,8 @@ public class ResourceEngine : MonoBehaviour
     public float _minSpeed = 1.3f;
     //testing
     
+    private float _slope;
+    
     private float _volition;
     private float _muscleStrain;
     private float _stamina;
@@ -45,8 +47,10 @@ public class ResourceEngine : MonoBehaviour
 //Balance variables - serialized 
     [SerializeField] private float volitionRegen = 1f;
     [SerializeField] private float coolingFactor = 0.2f;
+    [SerializeField] private float staminaUseRate = 1f;
+    [SerializeField] private float _slopeDirection;
 
-//Public properties - private set "Name { get; private set; }"
+    //Public properties - private set "Name { get; private set; }"
     public float _realSpeed { get; private set; }
 
 //-----------------//Functions//-----------------//
@@ -75,6 +79,7 @@ public class ResourceEngine : MonoBehaviour
                 _realSpeed += _acceleration * Time.deltaTime * upOrDown;
             }
             SpeedometerTick();
+            Debug.Log($"slope: {_slope}, slopeDir: {_slopeDirection}");
         }
     }
 
@@ -88,7 +93,7 @@ public class ResourceEngine : MonoBehaviour
     }
 
     private void StaminaTick() {
-        
+        _stamina -= _realSpeed * staminaUseRate * Time.deltaTime;
     }
 
     private void StrainTick() {
@@ -96,7 +101,7 @@ public class ResourceEngine : MonoBehaviour
     }
 
     private void VolitionTick() {
-        volitionRegen += Time.deltaTime * volitionRegen;
+        _volition += Time.deltaTime * volitionRegen;
     }
     
     private void SpeedometerTick() {
@@ -116,6 +121,10 @@ public class ResourceEngine : MonoBehaviour
 //External interaction - public
     public void StartRun() {
         _running = true;
+    }
+    public void UpdateSlope(float angle, float direction) {
+        _slope = angle;
+        _slopeDirection = direction;
     }
 
     public void Accelerate(int intensity) {

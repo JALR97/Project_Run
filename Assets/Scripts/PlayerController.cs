@@ -115,6 +115,12 @@ public class PlayerController : MonoBehaviour
             railDirection.y = 0; 
             targetDirection = railDirection;
             
+            //Send slope info to ResourceEngine
+            float slopeAngle = Vector3.Angle(groundNormal, Vector3.up);
+            float slopeDir = Vector3.Dot(Vector3.ProjectOnPlane(targetDirection.normalized, hit.normal),
+                Vector3.up);
+            engine.UpdateSlope(slopeAngle, slopeDir);
+            
             //Strafing and speed - Player in control mode
             if (runningMode == RunningMode.Control) {
                 float horizontal = Input.GetAxisRaw("Horizontal");
