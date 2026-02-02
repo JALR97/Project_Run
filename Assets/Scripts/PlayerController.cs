@@ -82,23 +82,28 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(Vector3.down * (gravity * Time.deltaTime));
         }
-        //Player input
-        Vector3 inputDirection = Vector3.zero;
-        if (playerState == PlayerState.Walking) {
-            var input2D = movementAction.action.ReadValue<Vector2>();
-            inputDirection = new Vector3(input2D.x, 0f, input2D.y);
-            /*float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
-            inputDirection = new Vector3(horizontal, 0f, vertical).normalized;*/
-        }
         
-        //Slope logic
+        //Slope calculation
         Physics.Raycast(groundedPoint.position, Vector3.down, out var hit, 1f, groundLayer);
         Vector3 groundNormal = hit.normal;
         Quaternion slopeRotation = Quaternion.FromToRotation(Vector3.up, groundNormal);
         
         //Movement logic
         Vector3 targetDirection = Vector3.zero;
+        
+        //Free movement when walking
+        Vector3 inputDirection = Vector3.zero;
+        if (playerState == PlayerState.Walking) {
+            var input2D = movementAction.action.ReadValue<Vector2>();
+            inputDirection = new Vector3(input2D.x, 0f, input2D.y);
+            
+            //Rotation from camera and WASD input
+            float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothSpeed, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            targetDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        }
+        
         //Behavior when autopilot is on aka running nonstop
         if (playerState == PlayerState.Running) {
             var localPoint = _splineContainer.transform.InverseTransformPoint(transform.position);
@@ -110,7 +115,7 @@ public class PlayerController : MonoBehaviour
             railDirection.y = 0; 
             targetDirection = railDirection;
             
-            //Strafing
+            //Strafing and speed - Player in control mode
             if (runningMode == RunningMode.Control) {
                 float horizontal = Input.GetAxisRaw("Horizontal");
                 if (horizontal > 0f) {
@@ -120,24 +125,23 @@ public class PlayerController : MonoBehaviour
                     targetDirection += Vector3.Cross(targetDirection, Vector3.up) /* (strafeSpeed * Time.deltaTime)*/;
                     targetDirection.Normalize();
                 }
+
+                float vertical = Input.GetAxisRaw("Vertical");
+                if (vertical > 0f) {
+                    engine.Accelerate(0);
+                }else if (vertical < 0f) {
+                    engine.Decelerate(0);
+                }
             }
             
             //rotation from rail movement
             float targetAngle = Mathf.Atan2(railDirection.x, railDirection.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothSpeed, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            
-        }else {
-            //Rotation from camera and WASD input - Walking
-            float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothSpeed, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            targetDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
         
-        //Actual translation part
+        //Actual translation part after all the calculations
         if (inputDirection.magnitude >= 0.1f || playerState == PlayerState.Running) {
-            
             adjustedDirection = slopeRotation * targetDirection;
             //adjustedDirection += strafeSpeed;
             
@@ -180,6 +184,7 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Running:
                 SwitchMode(RunningMode.Control);
                 GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
+                engine.StartRun();
                 break;
         }
     }
