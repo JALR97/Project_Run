@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SplineContainer _splineContainer;
     
     [SerializeField] private GameObject _modeSwitchUI;
+    [SerializeField] private GameObject _crosshairUI;
     
     [SerializeField] private ResourceEngine engine;
     
@@ -202,14 +203,17 @@ public class PlayerController : MonoBehaviour
             case RunningMode.Control:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
                 Debug.Log("Mode:Control");
+                _crosshairUI.SetActive(false);
                 break;
             case RunningMode.Attention:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.attention);
                 Debug.Log("Mode:Attention");
+                _crosshairUI.SetActive(true);
                 break;
             case RunningMode.Information:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
                 Debug.Log("Mode:Info");
+                _crosshairUI.SetActive(false);
                 break;
         }
     }
