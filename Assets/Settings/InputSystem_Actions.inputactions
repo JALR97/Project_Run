@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "InputSystem_Actions",
     "maps": [
         {
@@ -36,6 +37,15 @@
                     "name": "SpeedControl",
                     "type": "Button",
                     "id": "fd7498db-2ecb-4a92-90e5-eb3c0b3beb94",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Boost",
+                    "type": "Button",
+                    "id": "c9018709-3a93-477a-8812-b13c3b0bfdc8",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -196,6 +206,17 @@
                     "action": "SpeedControl",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "dcf289d7-8074-43c2-85e4-7605e1618890",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

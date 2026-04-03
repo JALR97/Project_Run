@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceEngine : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class ResourceEngine : MonoBehaviour
     [SerializeField] private PlayerController playerController;
 
     [SerializeField] private RectTransform needleUI, targetUI;
+    [SerializeField] private Slider staminaBar, volitionBar;
     
 //-----------------//Variables//-----------------//
 //Process variables - private
@@ -32,6 +34,8 @@ public class ResourceEngine : MonoBehaviour
     
     public float _maxSpeed = 3.5f;
     public float _minSpeed = 1.3f;
+    
+    public float boostTimer;
     //testing
     
     private float _slope;
@@ -43,12 +47,22 @@ public class ResourceEngine : MonoBehaviour
     private int _stability;
 
     private bool _running;
+    private bool _boosting;
+    private bool _canBoost = true;
 
 //Balance variables - serialized 
-    [SerializeField] private float volitionRegen = 1f;
+    [SerializeField] private float volitionRegen = 2f;
+    [SerializeField] private float boostCooldown = 7f;
+    [SerializeField] private float boostDuration = 3f;
+    [SerializeField] private float boostConsumption = 20f;
+    
     [SerializeField] private float coolingFactor = 0.2f;
     [SerializeField] private float staminaUseRate = 1f;
     [SerializeField] private float _slopeDirection;
+    
+    [SerializeField] private float UIbarTickTime = 0.2f;
+    
+    
 
     //Public properties - private set "Name { get; private set; }"
     public float _realSpeed { get; private set; }
@@ -57,10 +71,12 @@ public class ResourceEngine : MonoBehaviour
 //Built-in
     private void Start() {
         _realSpeed = _targetSpeed;
-        SpeedometerTick();
+        SpeedometerTickUI();
         _volition = 100f;
         _stamina = 100f;
         
+        staminaBar.maxValue = _stamina;
+        volitionBar.maxValue = _volition;
         /*
          Future implementation
         _temperature = 37f;
@@ -71,6 +87,13 @@ public class ResourceEngine : MonoBehaviour
 
     private void Update() {
         //Debug.Log(_realSpeed);
+        if (_boosting) {
+            _acceleration = 1f;
+        }
+        else {
+            _acceleration = 0.4f;
+        }
+        
         if (_running) {
             StaminaTick();
             VolitionTick();
@@ -78,9 +101,23 @@ public class ResourceEngine : MonoBehaviour
                 int upOrDown = (_targetSpeed - _realSpeed) >= 0f ? 1 : -1;
                 _realSpeed += _acceleration * Time.deltaTime * upOrDown;
             }
-            SpeedometerTick();
-            Debug.Log($"slope: {_slope}, slopeDir: {_slopeDirection}");
+            UIUpdate();
+            //Debug.Log($"slope: {_slope}, slopeDir: {_slopeDirection}");
         }
+    }
+
+    private void UIUpdate() {
+        SpeedometerTickUI();
+        StaminaUITick();
+        VolitionUITick();
+    }
+
+    private void VolitionUITick() {
+        volitionBar.value = _volition;
+    }
+
+    private void StaminaUITick() {
+        staminaBar.value = _stamina;
     }
 
     private void StabilityTick() {
@@ -104,7 +141,7 @@ public class ResourceEngine : MonoBehaviour
         _volition += Time.deltaTime * volitionRegen;
     }
     
-    private void SpeedometerTick() {
+    private void SpeedometerTickUI() {
         float speedRatio = (_realSpeed - _minSpeed) / (_maxSpeed - _minSpeed);
         float targetRatio = (_targetSpeed - _minSpeed) / (_maxSpeed - _minSpeed);
         //Debug.Log($"ratio = {_realSpeed} - {_minSpeed} / {_maxSpeed} - {_minSpeed} == {speedRatio}");
@@ -154,6 +191,32 @@ public class ResourceEngine : MonoBehaviour
                 break;           
         }
     }
-    
+
+    public void Nitro() {
+        if (!_canBoost) 
+            return; 
+        
+        Debug.Log("Nitro");
+        _boosting = true;
+        _canBoost = false;
+        float startVal = _volition;
+        float endVal = _volition - boostConsumption;
+        
+        Animator.Instance.Animate(
+            UIbarTickTime,
+            t => { _volition = Mathf.Lerp(startVal, endVal, t); },
+            Animator.EaseOutCubic);  
+        
+        Animator.Instance.Animate(
+            boostDuration,
+            t => { } ,null,
+            () => { _boosting = false; Debug.Log("not boosting anymore");}); 
+        
+        Animator.Instance.Animate(
+            boostCooldown,
+            t => { } ,null,
+            () => { _canBoost = true; Debug.Log("can boost again");}); 
+        
+    }
     
 }

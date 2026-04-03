@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActionReference movementAction;
     [SerializeField] private InputActionReference speedAction;
     [SerializeField] private InputActionReference modeSwitchAction;
+    [SerializeField] private InputActionReference boostAction;
 
 //-----------------//Variables//-----------------//
 //Process variables - private
@@ -124,6 +125,10 @@ public class PlayerController : MonoBehaviour
             
             //Strafing and speed - Player in control mode
             if (runningMode == RunningMode.Control) {
+                if (boostAction.action.WasPressedThisFrame()) {
+                    engine.Nitro();
+                }
+                
                 float horizontal = Input.GetAxisRaw("Horizontal");
                 if (horizontal > 0f) {
                     targetDirection += Vector3.Cross(Vector3.up, targetDirection) /* (strafeSpeed * Time.deltaTime)*/;
