@@ -7,7 +7,13 @@ public class ResourceEngine : MonoBehaviour
 {
 //-----------------//Data structures//-----------------//
 //enums
-
+    public enum SlopesCat {
+        SteepDown,
+        LightDown,
+        Flat,
+        LightUp,
+        SteepUp
+    }
 
 //structs
 
@@ -20,6 +26,7 @@ public class ResourceEngine : MonoBehaviour
 
 
 //External References
+    [Header("External")]
     [SerializeField] private PlayerController playerController;
 
     [SerializeField] private RectTransform needleUI, targetUI;
@@ -27,18 +34,14 @@ public class ResourceEngine : MonoBehaviour
     
 //-----------------//Variables//-----------------//
 //Process variables - private
+    
     //temporarily public for testing:
     public float _targetSpeed = 2f;
-    public float _targetSpeedChangeRate = 0.5f;
     public float _acceleration = 0.3f;
-    
-    public float _maxSpeed = 3.5f;
-    public float _minSpeed = 1.3f;
-    
-    public float boostTimer;
+
+    public SlopesCat currentSlope;
     //testing
-    
-    private float _slope;
+
     
     private float _volition;
     private float _muscleStrain;
@@ -51,21 +54,32 @@ public class ResourceEngine : MonoBehaviour
     private bool _canBoost = true;
 
 //Balance variables - serialized 
-    [SerializeField] private float volitionRegen = 2f;
-    [SerializeField] private float boostCooldown = 7f;
+    [Header("Boost")]
     [SerializeField] private float boostDuration = 3f;
+    [SerializeField] private float boostCooldown = 7f;
     [SerializeField] private float boostConsumption = 20f;
     [SerializeField] private float speedBoostFactor = 1.5f;
     
-    [SerializeField] private float coolingFactor = 0.2f;
+    [Header("Resources")]
     [SerializeField] private float staminaUseRate = 1f;
-    [SerializeField] private float _slopeDirection;
+    [SerializeField] private float volitionRegen = 0.3f;
+    [SerializeField] private float coolingFactor = 0.2f;
     
+    [Header("Slope")]
+    [SerializeField] private float slopeFlatThreshold = 5f;
+    [SerializeField] private float SlopeSteepThreshold = 15f;
+    public float _slope; //tempPublic
+    public float _slopeDirection; //tempPublic
+    
+    [Header("Speed")]
+    [SerializeField] private float _targetSpeedChangeRate = 0.5f;
+    [SerializeField] private float _maxSpeed = 3f;
+    [SerializeField] private float _minSpeed = 1.3f;
+    
+    [Header("UI")]
     [SerializeField] private float UIbarTickTime = 0.2f;
     [SerializeField] private float UIbarFlashSpeed = 0.1f;
     [SerializeField] private float UIbarFlashForce = 0.2f;
-    
-    
 
     //Public properties - private set "Name { get; private set; }"
     public float _realSpeed { get; private set; }
@@ -90,6 +104,9 @@ public class ResourceEngine : MonoBehaviour
 
     private void Update() {
         //Debug.Log(_realSpeed);
+        DetermineSlope();
+        Debug.Log(currentSlope);
+        
         if (_boosting) {
             _acceleration = 1f;
         }
@@ -113,6 +130,15 @@ public class ResourceEngine : MonoBehaviour
         }
     }
 
+    private void DetermineSlope() {
+        if (_slope < slopeFlatThreshold) 
+            currentSlope = SlopesCat.Flat;
+        else
+            if (_slope > SlopeSteepThreshold) {
+                currentSlope = _slopeDirection > 0 ? SlopesCat.SteepUp : SlopesCat.SteepDown;
+            }
+            else currentSlope = _slopeDirection > 0 ? SlopesCat.LightUp : SlopesCat.LightDown;
+    }
     private void UIUpdate() {
         SpeedometerTickUI();
         StaminaUITick();
