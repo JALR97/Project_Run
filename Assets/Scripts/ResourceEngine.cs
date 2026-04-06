@@ -55,12 +55,15 @@ public class ResourceEngine : MonoBehaviour
     [SerializeField] private float boostCooldown = 7f;
     [SerializeField] private float boostDuration = 3f;
     [SerializeField] private float boostConsumption = 20f;
+    [SerializeField] private float speedBoostFactor = 1.5f;
     
     [SerializeField] private float coolingFactor = 0.2f;
     [SerializeField] private float staminaUseRate = 1f;
     [SerializeField] private float _slopeDirection;
     
     [SerializeField] private float UIbarTickTime = 0.2f;
+    [SerializeField] private float UIbarFlashSpeed = 0.1f;
+    [SerializeField] private float UIbarFlashForce = 0.2f;
     
     
 
@@ -101,6 +104,10 @@ public class ResourceEngine : MonoBehaviour
                 int upOrDown = (_targetSpeed - _realSpeed) >= 0f ? 1 : -1;
                 _realSpeed += _acceleration * Time.deltaTime * upOrDown;
             }
+
+            if (_boosting) {
+                _realSpeed = _targetSpeed * speedBoostFactor;
+            }
             UIUpdate();
             //Debug.Log($"slope: {_slope}, slopeDir: {_slopeDirection}");
         }
@@ -130,6 +137,9 @@ public class ResourceEngine : MonoBehaviour
     }
 
     private void StaminaTick() {
+        if (_boosting) 
+            return;
+        
         _stamina -= _realSpeed * staminaUseRate * Time.deltaTime;
     }
 
@@ -201,16 +211,25 @@ public class ResourceEngine : MonoBehaviour
         _canBoost = false;
         float startVal = _volition;
         float endVal = _volition - boostConsumption;
+        Image staminaFill = staminaBar.transform.GetChild(1).GetChild(0).GetComponent<Image>(); //Could give problems later
         
         Animator.Instance.Animate(
             UIbarTickTime,
             t => { _volition = Mathf.Lerp(startVal, endVal, t); },
-            Animator.EaseOutCubic);  
+            Animator.EaseOutCubic);
         
+        Color imgC = staminaFill.color; //All this for the bar flashing
+        Color.RGBToHSV(imgC, out float h, out float s, out float v);
         Animator.Instance.Animate(
             boostDuration,
-            t => { } ,null,
-            () => { _boosting = false; Debug.Log("not boosting anymore");}); 
+            t => {
+                staminaFill.color = Color.HSVToRGB(h, s, v + Mathf.Cos(t * UIbarFlashSpeed) * UIbarFlashForce);
+            } ,null,
+            () => {
+                _boosting = false; 
+                staminaFill.color = imgC;
+                Debug.Log("not boosting anymore");
+            }); 
         
         Animator.Instance.Animate(
             boostCooldown,

@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         SwitchGameState(GameState.MainMenu);
+        //Debug:
+        RenderSettings.fog = true;
     }  
     
     public void SwitchGameState(GameState newState) {
