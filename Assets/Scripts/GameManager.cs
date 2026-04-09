@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour {
         SwitchGameState(GameState.MainMenu);
         //Debug:
         RenderSettings.fog = true;
+        attentionFollow = attentionCam.GetComponent<CinemachineOrbitalFollow>();
     }  
     
     public void SwitchGameState(GameState newState) {
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject walkingCam;
     [SerializeField] private GameObject railCam;
     [SerializeField] private GameObject attentionCam;
+    private CinemachineOrbitalFollow attentionFollow;
     public void SwitchCam (Cameras camID){
         walkingCam.SetActive(false);
         railCam.SetActive(false);
@@ -95,6 +98,8 @@ public class GameManager : MonoBehaviour {
                 railCam.SetActive(true);
                 break;
             case Cameras.attention:
+                attentionFollow.HorizontalAxis.Value = 0f;
+                attentionFollow.VerticalAxis.Value = 17.5f;
                 attentionCam.SetActive(true);
                 break;
         }

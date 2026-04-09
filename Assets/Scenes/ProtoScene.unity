@@ -12328,63 +12328,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218201311}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1222010609
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1030972776, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_Name
-      value: SM_Palm_Tree_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972777, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972777, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.0000004511561
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972777, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 47.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972777, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972777, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972777, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972777, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972777, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972777, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972777, guid: abc00000000005033532477517355298, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: abc00000000005033532477517355298, type: 3}
 --- !u!1 &1262187721
 GameObject:
   m_ObjectHideFlags: 0
@@ -15588,63 +15531,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1001 &1639757654
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1030972893, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_Name
-      value: SM_Palm_Tree_02
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972894, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972894, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.00558424
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972894, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 53.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972894, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.8842844
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972894, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972894, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.46694875
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972894, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972894, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972894, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -55.673
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030972894, guid: abc00000000013758182266225624169, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: abc00000000013758182266225624169, type: 3}
 --- !u!1 &1647621435
 GameObject:
   m_ObjectHideFlags: 0
@@ -17744,7 +17630,8 @@ MonoBehaviour:
   staminaBar: {fileID: 656766842}
   volitionBar: {fileID: 1639235037}
   _targetSpeed: 2
-  _acceleration: 0.4
+  _acceleration: 0.25
+  _deceleration: -0.5
   currentSlope: 0
   boostDuration: 3
   boostCooldown: 5
@@ -17763,6 +17650,10 @@ MonoBehaviour:
   UIbarTickTime: 0.2
   UIbarFlashSpeed: 22
   UIbarFlashForce: 0.25
+  joggingSpeedTH: 1.5
+  runningSpeedTH: 2
+  sprintingSpeedTH: 2.7
+  _realSpeed: 0
 --- !u!1 &1912500036
 GameObject:
   m_ObjectHideFlags: 0
@@ -20027,11 +19918,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 222371231}
+  - {fileID: 588302046}
   - {fileID: 1286124532}
   - {fileID: 405525480}
-  - {fileID: 588302046}
   - {fileID: 362180465}
   - {fileID: 1820568515}
   - {fileID: 184396060}
-  - {fileID: 1222010609}
-  - {fileID: 1639757654}

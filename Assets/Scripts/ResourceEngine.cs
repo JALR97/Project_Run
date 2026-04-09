@@ -14,6 +14,12 @@ public class ResourceEngine : MonoBehaviour
         LightUp,
         SteepUp
     }
+    public enum SpeedCategory {
+        WALKING,
+        JOGGING,
+        RUNNING,
+        SPRINTING
+    }
 
 //structs
 
@@ -37,7 +43,8 @@ public class ResourceEngine : MonoBehaviour
     
     //temporarily public for testing:
     public float _targetSpeed = 2f;
-    public float _acceleration = 0.3f;
+    public float _acceleration = 0.2f;
+    public float _deceleration = -0.5f;
 
     public SlopesCat currentSlope;
     //testing
@@ -80,9 +87,16 @@ public class ResourceEngine : MonoBehaviour
     [SerializeField] private float UIbarTickTime = 0.2f;
     [SerializeField] private float UIbarFlashSpeed = 0.1f;
     [SerializeField] private float UIbarFlashForce = 0.2f;
-
+    
+    [Header("Thresholds")]
+    [SerializeField] private float joggingSpeedTH = 0.2f;
+    [SerializeField] private float runningSpeedTH = 0.1f;
+    [SerializeField] private float sprintingSpeedTH = 0.2f;
+    private SpeedCategory _speedCategory = SpeedCategory.WALKING;
+    
     //Public properties - private set "Name { get; private set; }"
-    public float _realSpeed { get; private set; }
+    //public float _realSpeed { get; private set; }
+    public float _realSpeed;
 
 //-----------------//Functions//-----------------//
 //Built-in
@@ -105,30 +119,26 @@ public class ResourceEngine : MonoBehaviour
     private void Update() {
         //Debug.Log(_realSpeed);
         DetermineSlope();
-        Debug.Log(currentSlope);
-        
-        if (_boosting) {
-            _acceleration = 1f;
-        }
-        else {
-            _acceleration = 0.4f;
-        }
+        //Debug.Log(currentSlope);
+        Debug.Log(_speedCategory);
         
         if (_running) {
+            DetermineSpeedCategory();
             StaminaTick();
             VolitionTick();
             if (!Mathf.Approximately(_targetSpeed, _realSpeed)) {
-                int upOrDown = (_targetSpeed - _realSpeed) >= 0f ? 1 : -1;
-                _realSpeed += _acceleration * Time.deltaTime * upOrDown;
+                _realSpeed += ((_targetSpeed - _realSpeed) >= 0f ? _acceleration : _deceleration) * Time.deltaTime;
             }
 
             if (_boosting) {
-                _realSpeed = _targetSpeed * speedBoostFactor;
+                _realSpeed = _targetSpeed;
             }
             UIUpdate();
             //Debug.Log($"slope: {_slope}, slopeDir: {_slopeDirection}");
         }
     }
+    
+    //Inner process - private
 
     private void DetermineSlope() {
         if (_slope < slopeFlatThreshold) 
@@ -139,40 +149,124 @@ public class ResourceEngine : MonoBehaviour
             }
             else currentSlope = _slopeDirection > 0 ? SlopesCat.LightUp : SlopesCat.LightDown;
     }
+    private void DetermineSpeedCategory() {
+        if (_running) {
+            if (_realSpeed <= joggingSpeedTH) {
+                _speedCategory = SpeedCategory.WALKING;
+            }else if (_realSpeed <= runningSpeedTH) {
+                _speedCategory = SpeedCategory.JOGGING;
+            }else if (_realSpeed <= sprintingSpeedTH) {
+                _speedCategory = SpeedCategory.RUNNING;
+            }else
+                _speedCategory = SpeedCategory.SPRINTING;
+        }
+    }
     private void UIUpdate() {
         SpeedometerTickUI();
         StaminaUITick();
         VolitionUITick();
     }
 
+    private void StaminaTick() {
+        if (_boosting) 
+            return;
+
+        float adjustedRate = staminaUseRate;
+        switch (_speedCategory) {
+            case SpeedCategory.WALKING:
+                switch (currentSlope) {
+                    case SlopesCat.SteepDown:
+                        adjustedRate *= 2;
+                        break;
+                    case SlopesCat.LightDown:
+                        adjustedRate *= 2;
+                        break;
+                    case SlopesCat.Flat:
+                        adjustedRate *= 3;
+                        break;
+                    case SlopesCat.LightUp:
+                        adjustedRate *= 0;
+                        break;
+                    case SlopesCat.SteepUp:
+                        adjustedRate *= -1;
+                        break;
+                }
+                break;
+            case SpeedCategory.JOGGING:
+                switch (currentSlope) {
+                    case SlopesCat.SteepDown:
+                        adjustedRate *= 0;
+                        break;
+                    case SlopesCat.LightDown:
+                        adjustedRate *= 1;
+                        break;
+                    case SlopesCat.Flat:
+                        adjustedRate *= -1;
+                        break;
+                    case SlopesCat.LightUp:
+                        adjustedRate *= -2;
+                        break;
+                    case SlopesCat.SteepUp:
+                        adjustedRate *= -3;
+                        break;
+                }
+                break;
+            case SpeedCategory.RUNNING:
+                switch (currentSlope) {
+                    case SlopesCat.SteepDown:
+                        adjustedRate *= -1;
+                        break;
+                    case SlopesCat.LightDown:
+                        adjustedRate *= -1;
+                        break;
+                    case SlopesCat.Flat:
+                        adjustedRate *= -2;
+                        break;
+                    case SlopesCat.LightUp:
+                        adjustedRate *= -2;
+                        break;
+                    case SlopesCat.SteepUp:
+                        adjustedRate *= -3;
+                        break;
+                }
+                break;
+            case SpeedCategory.SPRINTING:
+                switch (currentSlope) {
+                    case SlopesCat.SteepDown:
+                        adjustedRate *= -2;
+                        break;
+                    case SlopesCat.LightDown:
+                        adjustedRate *= -1;
+                        break;
+                    case SlopesCat.Flat:
+                        adjustedRate *= -3;
+                        break;
+                    case SlopesCat.LightUp:
+                        adjustedRate *= -3;
+                        break;
+                    case SlopesCat.SteepUp:
+                        adjustedRate *= -4;//might be too much
+                        break;
+                }
+                break;
+        }
+        //Do we still involve the actual speed number?
+        //_stamina += _realSpeed * adjustedRate * Time.deltaTime;
+        _stamina += adjustedRate * Time.deltaTime;
+    }
     private void VolitionUITick() {
         volitionBar.value = _volition;
     }
-
-    private void StaminaUITick() {
-        staminaBar.value = _stamina;
-    }
-
     private void StabilityTick() {
         
     }
-
     private void TemperatureTick() {
         _temperature -= Time.deltaTime * coolingFactor;
         _temperature = Mathf.Clamp(_temperature, 37.0f, 40.0f);
     }
-
-    private void StaminaTick() {
-        if (_boosting) 
-            return;
-        
-        _stamina -= _realSpeed * staminaUseRate * Time.deltaTime;
+    private void StaminaUITick() {
+        staminaBar.value = _stamina;
     }
-
-    private void StrainTick() {
-        
-    }
-
     private void VolitionTick() {
         _volition += Time.deltaTime * volitionRegen;
     }
@@ -187,11 +281,8 @@ public class ResourceEngine : MonoBehaviour
         needleUI.localEulerAngles = new Vector3(0f, 0f, rotationNeedle);
         targetUI.localEulerAngles = new Vector3(0f, 0f, rotationTarget);
     }
-    
-    //Inner process - private
 
-
-//External interaction - public
+    //External interaction - public
     public void StartRun() {
         _running = true;
     }
