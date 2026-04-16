@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 
-public class Animator : MonoBehaviour
+public class Anim : MonoBehaviour
 {
     //-----------------//Use Example//-----------------//
     /*     
@@ -15,7 +15,7 @@ public class Animator : MonoBehaviour
             });     
      */
     //-----------------//SINGLETON//-----------------//
-    public static Animator Instance { get; private set; }
+    public static Anim Instance { get; private set; }
     private void Awake()
     {
         if (Instance == null) Instance = this;

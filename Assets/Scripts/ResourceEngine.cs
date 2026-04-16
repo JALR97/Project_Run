@@ -120,7 +120,7 @@ public class ResourceEngine : MonoBehaviour
         //Debug.Log(_realSpeed);
         DetermineSlope();
         //Debug.Log(currentSlope);
-        Debug.Log(_speedCategory);
+        //Debug.Log(_speedCategory);
         
         if (_running) {
             DetermineSpeedCategory();
@@ -330,14 +330,14 @@ public class ResourceEngine : MonoBehaviour
         float endVal = _volition - boostConsumption;
         Image staminaFill = staminaBar.transform.GetChild(1).GetChild(0).GetComponent<Image>(); //Could give problems later
         
-        Animator.Instance.Animate(
+        Anim.Instance.Animate(
             UIbarTickTime,
             t => { _volition = Mathf.Lerp(startVal, endVal, t); },
-            Animator.EaseOutCubic);
+            Anim.EaseOutCubic);
         
         Color imgC = staminaFill.color; //All this for the bar flashing
         Color.RGBToHSV(imgC, out float h, out float s, out float v);
-        Animator.Instance.Animate(
+        Anim.Instance.Animate(
             boostDuration,
             t => {
                 staminaFill.color = Color.HSVToRGB(h, s, v + Mathf.Cos(t * UIbarFlashSpeed) * UIbarFlashForce);
@@ -345,10 +345,10 @@ public class ResourceEngine : MonoBehaviour
             () => {
                 _boosting = false; 
                 staminaFill.color = imgC;
-                Debug.Log("not boosting anymore");
+                //Debug.Log("not boosting anymore");
             }); 
         
-        Animator.Instance.Animate(
+        Anim.Instance.Animate(
             boostCooldown,
             t => { } ,null,
             () => { _canBoost = true; Debug.Log("can boost again");}); 
