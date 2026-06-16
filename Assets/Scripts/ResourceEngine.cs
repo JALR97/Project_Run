@@ -70,6 +70,7 @@ public class ResourceEngine : MonoBehaviour
     [Header("Resources")]
     [SerializeField] private float staminaUseRate = 1f;
     [SerializeField] private float volitionRegen = 0.3f;
+    [SerializeField] private float volitionLandmarkBoost = 20f;
     [SerializeField] private float coolingFactor = 0.2f;
     
     [Header("Slope")]
@@ -115,6 +116,14 @@ public class ResourceEngine : MonoBehaviour
         _muscleStrain = 0f; 
          */
     }
+    
+    private void Awake() {
+        Observer.OnLandmarkSeen += LandmarkBoost;
+    }
+
+    private void OnDestroy() {
+        Observer.OnLandmarkSeen -= LandmarkBoost;
+    }
 
     private void Update() {
         //Debug.Log(_realSpeed);
@@ -139,7 +148,9 @@ public class ResourceEngine : MonoBehaviour
     }
     
     //Inner process - private
-
+    private void LandmarkBoost() {
+        _volition += volitionLandmarkBoost;
+    }
     private void DetermineSlope() {
         if (_slope < slopeFlatThreshold) 
             currentSlope = SlopesCat.Flat;

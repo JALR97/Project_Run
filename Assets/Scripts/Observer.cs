@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,19 +7,50 @@ public class Observer : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private float radius = 0.35f;
     [SerializeField] private float maxDistance = 8f;
+    [SerializeField] private float observeTime = 2.5f;
     [SerializeField] private LayerMask targetLayer;
 
     [SerializeField] private InputActionReference clickAction;
     
     private GameObject CurrentTarget = null;
+    private float timer;
 
     private bool lockedOn = false;
+    
+    public static event Action OnLandmarkSeen;
     void Update()
     {
+        if (lockedOn) {
+            //All the behavior when we are locked onto a landmark
+            timer += Time.deltaTime;
+            //Fade color of crosshair
+            if (timer >= observeTime) {
+                lockedOn = false;
+                timer = 0f;
+                OnLandmarkSeen?.Invoke();
+                Debug.Log("seen");
+                GameManager.Instance.SwitchCam(GameManager.Cameras.attention);
+                CurrentTarget.GetComponent<Landmark>().Un_Highlight();
+                CurrentTarget = null;
+            }
+            else {
+                var distance = CurrentTarget.transform.position - transform.position;
+                if (distance.magnitude > maxDistance || clickAction.action.WasPressedThisFrame()) {
+                    CurrentTarget.GetComponent<Landmark>().Un_Highlight();
+                    Debug.Log("not seen");
+                    CurrentTarget = null;
+                    lockedOn = false;
+                    timer = 0f;
+                    GameManager.Instance.SwitchCam(GameManager.Cameras.attention);
+                }
+            }
+        }
         if (CurrentTarget && clickAction.action.WasPressedThisFrame()) {
             lockedOn = true; 
+            GameManager.Instance.LockOnTarget(CurrentTarget.transform);
             GameManager.Instance.SwitchCam(GameManager.Cameras.lockedon);
             //All the code to assign the lock on and everything else
+            timer = 0f;
         }
         
         if (!lockedOn) {
@@ -26,9 +58,7 @@ public class Observer : MonoBehaviour
 
             if (Physics.SphereCast(ray, radius, out RaycastHit hit, maxDistance, targetLayer, QueryTriggerInteraction.Ignore))
             {
-                Debug.Log("Ray hit");
                 if (!CurrentTarget) {
-                    Debug.Log("if not target");
                     CurrentTarget = hit.collider.gameObject;
                     CurrentTarget.GetComponent<Landmark>().Highlight();
                 }
@@ -39,10 +69,6 @@ public class Observer : MonoBehaviour
                 CurrentTarget.GetComponent<Landmark>().Un_Highlight();
                 CurrentTarget = null;
             }
-        }
-
-        if (lockedOn) {
-            //All the behavior when we are locked onto a landmark
         }
     }
     

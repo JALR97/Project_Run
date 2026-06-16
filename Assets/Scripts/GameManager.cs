@@ -110,4 +110,8 @@ public class GameManager : MonoBehaviour {
                 break;
         }
     }
+
+    public void LockOnTarget(Transform target) {
+        lockedonCam.GetComponent<CinemachineCamera>().LookAt = target;
+    }
 }
