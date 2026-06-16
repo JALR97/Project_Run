@@ -72,6 +72,8 @@ public class ResourceEngine : MonoBehaviour
     [SerializeField] private float volitionRegen = 0.3f;
     [SerializeField] private float volitionLandmarkBoost = 20f;
     [SerializeField] private float coolingFactor = 0.2f;
+    [SerializeField] private AudioClip chime;
+    [SerializeField] private AudioClip chime2;
     
     [Header("Slope")]
     [SerializeField] private float slopeFlatThreshold = 5f;
@@ -149,7 +151,8 @@ public class ResourceEngine : MonoBehaviour
     
     //Inner process - private
     private void LandmarkBoost() {
-        _volition += volitionLandmarkBoost;
+        _volition = Mathf.Clamp(_volition + volitionLandmarkBoost, 0f, volitionBar.maxValue);
+        AudioSource.PlayClipAtPoint(chime, Camera.main.transform.position);
     }
     private void DetermineSlope() {
         if (_slope < slopeFlatThreshold) 
@@ -275,8 +278,15 @@ public class ResourceEngine : MonoBehaviour
         _temperature -= Time.deltaTime * coolingFactor;
         _temperature = Mathf.Clamp(_temperature, 37.0f, 40.0f);
     }
+
+    //private bool exhausted;
     private void StaminaUITick() {
         staminaBar.value = _stamina;
+        /*if (_stamina < staminaBar.maxValue*0.2f && !exhausted) {
+            _maxSpeed /= 2;
+            exhausted = true;
+            staminaBar.fillRect.GetComponent<Image>().color = Color.red;
+        }*/
     }
     private void VolitionTick() {
         _volition += Time.deltaTime * volitionRegen;
@@ -331,7 +341,7 @@ public class ResourceEngine : MonoBehaviour
     }
 
     public void Nitro() {
-        if (!_canBoost) 
+        if (!_canBoost || _volition < boostConsumption) 
             return; 
         
         Debug.Log("Nitro");
@@ -340,6 +350,8 @@ public class ResourceEngine : MonoBehaviour
         float startVal = _volition;
         float endVal = _volition - boostConsumption;
         Image staminaFill = staminaBar.transform.GetChild(1).GetChild(0).GetComponent<Image>(); //Could give problems later
+        
+        AudioSource.PlayClipAtPoint(chime2, Camera.main.transform.position);
         
         Anim.Instance.Animate(
             UIbarTickTime,
