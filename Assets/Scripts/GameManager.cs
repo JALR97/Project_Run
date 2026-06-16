@@ -79,16 +79,19 @@ public class GameManager : MonoBehaviour {
     public enum Cameras {
         walking,
         rail,
-        attention
+        attention,
+        lockedon
     }
     [SerializeField] private GameObject walkingCam;
     [SerializeField] private GameObject railCam;
     [SerializeField] private GameObject attentionCam;
+    [SerializeField] private GameObject lockedonCam;
     private CinemachineOrbitalFollow attentionFollow;
     public void SwitchCam (Cameras camID){
         walkingCam.SetActive(false);
         railCam.SetActive(false);
         attentionCam.SetActive(false);
+        lockedonCam.SetActive(false);
         
         switch (camID) {
             case Cameras.walking:
@@ -101,6 +104,9 @@ public class GameManager : MonoBehaviour {
                 attentionFollow.HorizontalAxis.Value = 0f;
                 attentionFollow.VerticalAxis.Value = 17.5f;
                 attentionCam.SetActive(true);
+                break;
+            case Cameras.lockedon:
+                lockedonCam.SetActive(true);
                 break;
         }
     }

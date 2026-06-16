@@ -17,6 +17,7 @@ public class Observer : MonoBehaviour
     {
         if (CurrentTarget && clickAction.action.WasPressedThisFrame()) {
             lockedOn = true; 
+            GameManager.Instance.SwitchCam(GameManager.Cameras.lockedon);
             //All the code to assign the lock on and everything else
         }
         

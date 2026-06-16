@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private GameObject _modeSwitchUI;
     [SerializeField] private GameObject _crosshairUI;
+    [SerializeField] private GameObject _observer;
     
     [SerializeField] private ResourceEngine engine;
     
@@ -63,8 +64,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundRadius = 0.2f;
     [SerializeField] private float turnSmoothTime = 0.1f;
 
-    //Public properties - private set "Name { get; private set; }"
-
+    //DEBUG
+    [Header("DEBUG")] public bool freeze;
 
     //-----------------//Functions//-----------------//
     //Built-in
@@ -153,6 +154,8 @@ public class PlayerController : MonoBehaviour
         }
         
         //Actual translation part after all the calculations
+        if(freeze)
+            return;
         if (inputDirection.magnitude >= 0.1f || playerState == PlayerState.Running) {
             adjustedDirection = slopeRotation * targetDirection;
             //adjustedDirection += strafeSpeed;
@@ -209,16 +212,19 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
                 Debug.Log("Mode:Control");
                 _crosshairUI.SetActive(false);
+                _observer.SetActive(false);
                 break;
             case RunningMode.Attention:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.attention);
                 Debug.Log("Mode:Attention");
                 _crosshairUI.SetActive(true);
+                _observer.SetActive(true);
                 break;
             case RunningMode.Information:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
                 Debug.Log("Mode:Info");
                 _crosshairUI.SetActive(false);
+                _observer.SetActive(false);
                 break;
         }
     }
