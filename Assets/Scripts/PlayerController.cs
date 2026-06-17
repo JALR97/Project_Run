@@ -210,18 +210,21 @@ public class PlayerController : MonoBehaviour
         {
             case RunningMode.Control:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
+                CursorLocker.LockCursor();
                 Debug.Log("Mode:Control");
                 _crosshairUI.SetActive(false);
                 _observer.SetActive(false);
                 break;
             case RunningMode.Attention:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.attention);
+                CursorLocker.LockCursor();
                 Debug.Log("Mode:Attention");
                 _crosshairUI.SetActive(true);
                 _observer.SetActive(true);
                 break;
             case RunningMode.Information:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
+                CursorLocker.UnlockCursor();
                 Debug.Log("Mode:Info");
                 _crosshairUI.SetActive(false);
                 _observer.SetActive(false);

@@ -40,6 +40,7 @@ public class ResourceEngine : MonoBehaviour
     
 //-----------------//Variables//-----------------//
 //Process variables - private
+    private int multiplier = 1;
     
     //temporarily public for testing:
     public float _targetSpeed = 2f;
@@ -185,87 +186,91 @@ public class ResourceEngine : MonoBehaviour
         if (_boosting) 
             return;
 
-        float adjustedRate = staminaUseRate;
+        
+        multiplier = 1;
         switch (_speedCategory) {
             case SpeedCategory.WALKING:
                 switch (currentSlope) {
                     case SlopesCat.SteepDown:
-                        adjustedRate *= 2;
+                        multiplier = 2;
                         break;
                     case SlopesCat.LightDown:
-                        adjustedRate *= 2;
+                        multiplier = 2;
                         break;
                     case SlopesCat.Flat:
-                        adjustedRate *= 3;
+                        multiplier = 3;
                         break;
                     case SlopesCat.LightUp:
-                        adjustedRate *= 0;
+                        multiplier = 0;
                         break;
                     case SlopesCat.SteepUp:
-                        adjustedRate *= -1;
+                        multiplier = -1;
                         break;
                 }
                 break;
             case SpeedCategory.JOGGING:
                 switch (currentSlope) {
                     case SlopesCat.SteepDown:
-                        adjustedRate *= 0;
+                        multiplier = 0;
                         break;
                     case SlopesCat.LightDown:
-                        adjustedRate *= 1;
+                        multiplier = 1;
                         break;
                     case SlopesCat.Flat:
-                        adjustedRate *= -1;
+                        multiplier = -1;
                         break;
                     case SlopesCat.LightUp:
-                        adjustedRate *= -2;
+                        multiplier = -2;
                         break;
                     case SlopesCat.SteepUp:
-                        adjustedRate *= -3;
+                        multiplier = -3;
                         break;
                 }
                 break;
             case SpeedCategory.RUNNING:
                 switch (currentSlope) {
                     case SlopesCat.SteepDown:
-                        adjustedRate *= -1;
+                        multiplier = -1;
                         break;
                     case SlopesCat.LightDown:
-                        adjustedRate *= -1;
+                        multiplier = -1;
                         break;
                     case SlopesCat.Flat:
-                        adjustedRate *= -2;
+                        multiplier = -2;
                         break;
                     case SlopesCat.LightUp:
-                        adjustedRate *= -2;
+                        multiplier = -2;
                         break;
                     case SlopesCat.SteepUp:
-                        adjustedRate *= -3;
+                        multiplier = -3;
                         break;
                 }
                 break;
             case SpeedCategory.SPRINTING:
                 switch (currentSlope) {
                     case SlopesCat.SteepDown:
-                        adjustedRate *= -2;
+                        multiplier = -2;
                         break;
                     case SlopesCat.LightDown:
-                        adjustedRate *= -1;
+                        multiplier = -1;
                         break;
                     case SlopesCat.Flat:
-                        adjustedRate *= -3;
+                        multiplier = -3;
                         break;
                     case SlopesCat.LightUp:
-                        adjustedRate *= -3;
+                        multiplier = -3;
                         break;
                     case SlopesCat.SteepUp:
-                        adjustedRate *= -4;//might be too much
+                        multiplier = -4;//might be too much
                         break;
                 }
                 break;
         }
+        
+        
+        float adjustedRate = staminaUseRate * multiplier;
         //Do we still involve the actual speed number?
-        //_stamina += _realSpeed * adjustedRate * Time.deltaTime;
+        //_stamina += _realSpeed * multiplier  Time.deltaTime;
         _stamina += adjustedRate * Time.deltaTime;
     }
     private void VolitionUITick() {
@@ -280,6 +285,15 @@ public class ResourceEngine : MonoBehaviour
     }
 
     //private bool exhausted;
+    [Header("UI Icons")]
+    [SerializeField] private GameObject Up1;
+    [SerializeField] private GameObject Up2;
+    [SerializeField] private GameObject Up3;
+    [SerializeField] private GameObject Down1;
+    [SerializeField] private GameObject Down2;
+    [SerializeField] private GameObject Down3;
+    private GameObject previousIcon;
+    private int previousMult = 1;
     private void StaminaUITick() {
         staminaBar.value = _stamina;
         /*if (_stamina < staminaBar.maxValue*0.2f && !exhausted) {
@@ -287,6 +301,39 @@ public class ResourceEngine : MonoBehaviour
             exhausted = true;
             staminaBar.fillRect.GetComponent<Image>().color = Color.red;
         }*/
+        if (previousMult != multiplier) {
+            previousIcon?.SetActive(false);
+            switch (multiplier) {
+                case 0:
+                    break;
+                case 1:
+                    Up1.SetActive(true);
+                    previousIcon = Up1;
+                    break;
+                case 2:
+                    Up2.SetActive(true);
+                    previousIcon = Up2;
+                    break;
+                case 3:
+                    Up3.SetActive(true);
+                    previousIcon = Up3;
+                    break;
+                case -1:
+                    Down1.SetActive(true);
+                    previousIcon = Down1;
+                    break;
+                case -2:
+                    Down2.SetActive(true);
+                    previousIcon = Down2;
+                    break;
+                case -3:
+                case -4:
+                    Down3.SetActive(true);
+                    previousIcon = Down3;
+                    break;
+            }
+            previousMult = multiplier;
+        }
     }
     private void VolitionTick() {
         _volition += Time.deltaTime * volitionRegen;

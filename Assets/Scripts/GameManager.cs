@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour {
     private void Start() {
         SwitchGameState(GameState.MainMenu);
         //Debug:
-        RenderSettings.fog = true;
+        //RenderSettings.fog = true;
         attentionFollow = attentionCam.GetComponent<CinemachineOrbitalFollow>();
     }  
     
@@ -64,12 +64,16 @@ public class GameManager : MonoBehaviour {
         gameState = newState;
         switch (newState) {
             case GameState.MainMenu:
+                CursorLocker.UnlockCursor();
                 break;
             case GameState.Game:
+                CursorLocker.LockCursor();
                 break;
             case GameState.Paused:
+                CursorLocker.UnlockCursor();
                 break;
             case GameState.GameOver:
+                CursorLocker.UnlockCursor();
                 break;
         }
         OnGameStateChange?.Invoke(newState);
@@ -113,5 +117,17 @@ public class GameManager : MonoBehaviour {
 
     public void LockOnTarget(Transform target) {
         lockedonCam.GetComponent<CinemachineCamera>().LookAt = target;
+    }
+}
+
+public static class CursorLocker {
+    public static void LockCursor() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public static void UnlockCursor() {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
