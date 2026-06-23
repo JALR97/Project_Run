@@ -64,7 +64,9 @@ public class GameManager : MonoBehaviour {
         gameState = newState;
         switch (newState) {
             case GameState.MainMenu:
-                CursorLocker.UnlockCursor();
+                //DEBUGING -- Should be unlocked in main menu
+                //CursorLocker.UnlockCursor();
+                CursorLocker.LockCursor();
                 break;
             case GameState.Game:
                 CursorLocker.LockCursor();
