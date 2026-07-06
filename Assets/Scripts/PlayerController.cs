@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     public enum PlayerState {
         Inactive,
         Walking,
-        Running
+        Running,
+        Crashed
     }
     public enum RunningMode {
         Control,
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour
     
     //Balance variables - serialized 
     [SerializeField] private float speed;
-    [SerializeField] private float strafeSpeed;
+    [SerializeField] private float strafeSpeedMod;
     [SerializeField] private float gravity;
     [SerializeField] private float groundRadius = 0.2f;
     [SerializeField] private float turnSmoothTime = 0.1f;
@@ -134,9 +135,11 @@ public class PlayerController : MonoBehaviour
                 if (horizontal > 0f) {
                     targetDirection += Vector3.Cross(Vector3.up, targetDirection) /* (strafeSpeed * Time.deltaTime)*/;
                     targetDirection.Normalize();
+                    targetDirection *= strafeSpeedMod;
                 }else if (horizontal < 0f) {
                     targetDirection += Vector3.Cross(targetDirection, Vector3.up) /* (strafeSpeed * Time.deltaTime)*/;
                     targetDirection.Normalize();
+                    targetDirection *= strafeSpeedMod;
                 }
 
                 float vertical = Input.GetAxisRaw("Vertical");
@@ -185,6 +188,7 @@ public class PlayerController : MonoBehaviour
     }
     
     //External interaction - public
+    public PlayerState GetPlayerState() {return playerState;}
     public void SwitchState(PlayerState newState)
     {
         playerState = newState;
