@@ -4,53 +4,82 @@ using UnityEngine.Splines;
 using Random = UnityEngine.Random;
 
 public class TrackRunning : MonoBehaviour {
-    [SerializeField] private LayerMask groundLayer;
+
+    //Balance
     [SerializeField] private float runningSpeedMin;
     [SerializeField] private float runningSpeedMax;
-    private float runningSpeed;
-    [SerializeField] private bool inverse;
-    private SplineContainer _splineContainer;
-    private Vector3 railDirection;
     
-    [SerializeField] private float ratioRefreshRate = 1f;
-    private float refreshTimer;
-    /*[SerializeField] private float slopeRefreshRate = 0.1f;
-    private float slopeTimer;*/
+    [SerializeField] private float yOffset;
+    [SerializeField] private float HorizontalOffset;
+    
+    //Components
+    private SplineContainer _splineContainer;
+    [SerializeField] private Rigidbody _rb;
+    
+    //Inner work
+    private float currentRatio;
+    private float ratioSpeed;
+    private float runningSpeed;
+    private bool inverse;
     
     private void Start() {
-        runningSpeed = Random.Range(runningSpeedMin, runningSpeedMax);
+        //Bindings:
         _splineContainer = BContainer.Instance._splineContainer;
-        refreshTimer = Random.Range(0f, ratioRefreshRate);
+        //--------------------//
+        runningSpeed = Random.Range(runningSpeedMin, runningSpeedMax);
+        ratioSpeed = runningSpeed / _splineContainer.Spline.GetLength();
+        SetStartingRatio();
+        transform.position = EvaluatedPosition();
     }
 
-    private void Update() {
-        //Possibly optimize here the raycasting
-        Physics.Raycast(transform.position, Vector3.down, out var hit, 1f, groundLayer);
-        Vector3 groundNormal = hit.normal;
-        Quaternion slopeRotation = Quaternion.FromToRotation(Vector3.up, groundNormal);
-        
-        refreshTimer += Time.deltaTime;
-        if (refreshTimer >= ratioRefreshRate) {
-            refreshTimer = 0f;
-            SplineEval();
+    private Vector3 EvaluatedPosition() {
+        Vector3 position = GetRailPosition(currentRatio) + GetHorizontalOffsetVector(currentRatio);
+        position.y += yOffset;
+        return position;
+    }
+
+    private void FixedUpdate() {
+        currentRatio += (inverse ? 1f : -1f) * ratioSpeed * Time.fixedDeltaTime;
+        if (currentRatio > 1f) {
+            currentRatio -= 1f;
+        }else if (currentRatio < 0f) {
+            currentRatio += 1f;
         }
-        Vector3 adjustedDirection = slopeRotation * railDirection;
-        transform.Translate(adjustedDirection * (runningSpeed * Time.deltaTime), Space.World);
+        _rb.MovePosition(EvaluatedPosition());
     }
 
     public void SetInverse() {
         inverse = true;
+    } 
+    public void SetHorizontalOffset(float offset) {
+        HorizontalOffset = offset;
     }
 
-    private void SplineEval() {
+    private void SetStartingRatio() {
         var localPoint = _splineContainer.transform.InverseTransformPoint(transform.position);
         SplineUtility.GetNearestPoint(_splineContainer.Spline, localPoint, out _, out var ratio, 30, 3);
-            
-        Vector3 tangent = _splineContainer.Spline.EvaluateTangent(ratio);
-        tangent = inverse ? -tangent : tangent;
-        Vector3 normalizedTangent = tangent.normalized; 
-        railDirection = _splineContainer.transform.TransformDirection(normalizedTangent); //Direction of the spline
-        //Two options, don't zero out the y and see how that works, vs applying the sloperotation based on the track slope
-        railDirection.y = 0;
+        currentRatio = ratio;
+    }
+
+    private Vector3 GetHorizontalOffsetVector(float ratio) {
+        var tangent = GetRailTangent(ratio);
+        var horizontalVector = Vector3.Cross(tangent, Vector3.up);
+        horizontalVector.Normalize();
+        return horizontalVector * HorizontalOffset;
+    }
+    private Vector3 GetRailTangent(float ratio) {
+        Vector3 tangent = SplineUtility.EvaluateTangent(_splineContainer.Spline, ratio);
+        tangent.Normalize();
+        if (inverse) {
+            tangent = -1 * tangent;
+        }
+        tangent = _splineContainer.transform.TransformDirection(tangent);
+        return tangent;
+    }
+
+    private Vector3 GetRailPosition(float ratio) {
+        Vector3 position = SplineUtility.EvaluatePosition(_splineContainer.Spline, ratio);
+        position = _splineContainer.transform.TransformPoint(position);
+        return position;
     }
 }

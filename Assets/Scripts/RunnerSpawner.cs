@@ -53,18 +53,14 @@ public class RunnerSpawner : MonoBehaviour
     private void SpawnRunner(float ratio, bool inverse) {
         var parent = inverse ? I_runnersContainer.transform : runnersContainer.transform;
         var position = GetPostitionFromRatio(ratio, out Vector3 tangent);
-        
-        var horizontalVector = !inverse ? Vector3.Cross(Vector3.up, tangent) : Vector3.Cross(tangent, Vector3.up);
-        horizontalVector.Normalize();
-        var randomHorizontalOffset = Random.Range(horizontalOffsetMin, horizontalOffsetMax);
-        Debug.Log(randomHorizontalOffset);
-        position +=  horizontalVector * randomHorizontalOffset;
         position.y += verticalOffset;
         
         var runner = Instantiate(runnerPrefab, position, Quaternion.identity, parent);
+        var trk = runner.GetComponent<TrackRunning>();
         if (inverse) {
-            runner.GetComponent<TrackRunning>().SetInverse();
+            trk.SetInverse();
         }
+        trk.SetHorizontalOffset(Random.Range(horizontalOffsetMin, horizontalOffsetMax));
     }
 
     private Vector3 GetPostitionFromRatio(float ratio, out Vector3 tangent) {
