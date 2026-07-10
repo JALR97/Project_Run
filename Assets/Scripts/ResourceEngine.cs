@@ -70,6 +70,7 @@ public class ResourceEngine : MonoBehaviour
     
     [Header("Resources")]
     [SerializeField] private float staminaUseRate = 1f;
+    [SerializeField] private float staminaWaterBoost = 20f;
     [SerializeField] private float volitionRegen = 0.3f;
     [SerializeField] private float volitionLandmarkBoost = 20f;
     [SerializeField] private float coolingFactor = 0.2f;
@@ -153,6 +154,10 @@ public class ResourceEngine : MonoBehaviour
     //Inner process - private
     private void LandmarkBoost() {
         _volition = Mathf.Clamp(_volition + volitionLandmarkBoost, 0f, volitionBar.maxValue);
+        AudioSource.PlayClipAtPoint(chime, Camera.main.transform.position);
+    }
+    public void WaterBoost() {
+        _stamina = Mathf.Clamp(_stamina + staminaWaterBoost, 0f, staminaBar.maxValue);
         AudioSource.PlayClipAtPoint(chime, Camera.main.transform.position);
     }
     private void DetermineSlope() {
@@ -394,9 +399,13 @@ public class ResourceEngine : MonoBehaviour
         Debug.Log("Nitro");
         _boosting = true;
         _canBoost = false;
+        
+        _targetSpeed = _realSpeed = _maxSpeed;
+        
         float startVal = _volition;
         float endVal = _volition - boostConsumption;
         Image staminaFill = staminaBar.transform.GetChild(1).GetChild(0).GetComponent<Image>(); //Could give problems later
+        
         
         AudioSource.PlayClipAtPoint(chime2, Camera.main.transform.position);
         
