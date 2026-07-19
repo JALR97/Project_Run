@@ -1,16 +1,46 @@
+using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 [UxmlElement]
 public partial class Lungs : VisualElement
 {
-    private UIDocument uiDoc;
-    private VisualElement lungsButton;
+    float _innerRadius = 25f;
+    float _outerRadius = 50f;
+    float _thickness = 10f;
+    Color _strokeCol = Color.red;
 
-    private bool DeepBreath;
-    private float breatheTimer;
-    private float radius = 5f;
-
+    //Exposed values
+    [UxmlAttribute, CreateProperty]
+    public float innerRadius
+    {
+        get => _innerRadius;
+        set {
+            _innerRadius = value;
+            MarkDirtyRepaint(); }
+    }
+    [UxmlAttribute, CreateProperty]
+    public float outerRadius{
+        get => _outerRadius;
+        set {
+            _outerRadius = value;
+            MarkDirtyRepaint(); }
+    }
+    [UxmlAttribute, CreateProperty]
+    public float thickness{
+        get => _thickness;
+        set {
+            _thickness = value;
+            MarkDirtyRepaint(); }
+    }
+    [UxmlAttribute, CreateProperty]
+    public Color strokeCol{
+        get => _strokeCol;
+        set {
+            _strokeCol = value;
+            MarkDirtyRepaint(); }
+    }
+    
     public Lungs() {
         generateVisualContent += GenerateVisualContent;
     }
@@ -20,32 +50,21 @@ public partial class Lungs : VisualElement
         float height = contentRect.height;
 
         var painter = context.painter2D;
+        //Inner
         painter.BeginPath();
-        painter.lineWidth = 5f;
-        painter.Arc(new Vector2(width * 0.5f, height * 0.5f),radius,0, 360);
+        painter.Arc(new Vector2(width * 0.5f, height * 0.5f),_innerRadius,0, 360);
         painter.ClosePath();
+        painter.strokeColor = _strokeCol;
+        painter.lineWidth = _thickness;
+        painter.Stroke();
+        
+        //Outer
+        painter.BeginPath();
+        painter.lineWidth = _thickness;
+        painter.Arc(new Vector2(width * 0.5f, height * 0.5f),_outerRadius,0, 360);
+        painter.ClosePath();
+        painter.strokeColor = _strokeCol;
         painter.Stroke();
     }
-    
-    /*void Start(){
-        uiDoc = GetComponent<UIDocument>();    
-	
-        lungsButton = uiDoc.rootVisualElement.Q<VisualElement>("LungsButton");
-        lungsButton.RegisterCallback<PointerDownEvent>(OnDownLungs);
-        lungsButton.RegisterCallback<PointerUpEvent>(OnUpLungs);
-    }
 
-    private void OnDownLungs(PointerDownEvent e) {
-        DeepBreath = true;
-    }
-
-    private void OnUpLungs(PointerUpEvent e) {  
-        DeepBreath = false;
-    }
-
-    private void Update() {
-        if (DeepBreath) {
-            breatheTimer += Time.deltaTime;
-        }
-    }*/
 }

@@ -2257,7 +2257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RunnerSpawner
   refContainer: {fileID: 334402151}
   runnerPrefab: {fileID: 2442353428906050250, guid: 2bee0447ccdb96f46868fc166f023a85, type: 3}
-  runnersNum: 60
+  runnersNum: 1
   verticalOffset: 0.3
   horizontalOffsetMin: 0.15
   horizontalOffsetMax: 0.5
@@ -16435,6 +16435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1412918856}
   - component: {fileID: 1412918857}
+  - component: {fileID: 1412918858}
   m_Layer: 0
   m_Name: Breathing UI
   m_TagString: Untagged
@@ -16484,6 +16485,61 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &1412918858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412918855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59aeaba386078f24f981e5def430b8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreathController
+  _innerRadius: 45
+  _outerRadius: 85
+  _thickness: 12
+  _strokeCol: {r: 0.21050186, g: 0.82641506, b: 0.5886814, a: 1}
+  _minRange: 30
+  _maxRange: 100
+  _currentRadius: 30
+  radiusChangeSpeed: 24
+  radiusSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.5
+      inSlope: 0.06610929
+      outSlope: 0.06610929
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33677465
+    - serializedVersion: 3
+      time: 0.5004513
+      value: 1.0009155
+      inSlope: -0.6341353
+      outSlope: 0.5928048
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.12438597
+      outWeight: 0.16778797
+    - serializedVersion: 3
+      time: 1
+      value: 1.5
+      inSlope: -0.06586964
+      outSlope: -0.06586964
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.31039253
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _perfectOffset: 1
+  _goodOffset: 7
 --- !u!1 &1422685109
 GameObject:
   m_ObjectHideFlags: 0
