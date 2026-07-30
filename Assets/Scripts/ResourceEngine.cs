@@ -157,9 +157,14 @@ public class ResourceEngine : MonoBehaviour
         AudioSource.PlayClipAtPoint(chime, Camera.main.transform.position);
     }
     public void WaterBoost() {
-        _stamina = Mathf.Clamp(_stamina + staminaWaterBoost, 0f, staminaBar.maxValue);
+        StaminaBonus(staminaWaterBoost);
         AudioSource.PlayClipAtPoint(chime, Camera.main.transform.position);
     }
+
+    public void StaminaBonus(float amount) {
+        _stamina = Mathf.Clamp(_stamina + amount, 0f, staminaBar.maxValue);
+    }
+    
     private void DetermineSlope() {
         if (_slope < slopeFlatThreshold) 
             currentSlope = SlopesCat.Flat;

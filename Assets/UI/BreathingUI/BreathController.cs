@@ -14,6 +14,13 @@ public class BreathController : MonoBehaviour
     [SerializeField] float _outerRadius = 50f;
     [SerializeField] float _thickness = 10f;
     [SerializeField] Color _strokeCol = Color.red;
+
+    [Header("UI Colors")] 
+    [SerializeField] private Color emptyColor;
+    [SerializeField] private Color lightExColor;
+    [SerializeField] private Color heavyExColor;
+    [SerializeField] private Color goodBreathColor;
+    [SerializeField] private Color excellentBreathColor;
     
     [SerializeField] float _minRange = 40f;
     [SerializeField] float _maxRange = 60f;
@@ -25,6 +32,7 @@ public class BreathController : MonoBehaviour
     bool isIncreasing = true;
     bool ringsVisible = false;
     bool inactive = true;
+    bool greyedOut;
     float t_progressAlongRange;
 
     VisualElement lungsButton;
@@ -95,8 +103,9 @@ public class BreathController : MonoBehaviour
     }
     
     private void clickDown(PointerDownEvent e) {
-        if (!inactive) 
-            Evaluate();
+        if (greyedOut) return;
+        
+        if (!inactive) Evaluate();
         else {
             inactive = false;
             isIncreasing = true;
@@ -104,6 +113,28 @@ public class BreathController : MonoBehaviour
     }
     
     private void clickUp(PointerUpEvent e) {
+        if (greyedOut) return;
+        
         if (!inactive) Evaluate();
+    }
+
+    public void ExhaustionLevelUpdate(int currentLevel) {
+        if (currentLevel == 0) {
+            greyedOut = true;
+            _strokeCol = emptyColor;
+            lungsButton.style.opacity = 0.5f;
+        }
+        else {
+            greyedOut = false;
+            lungsButton.style.opacity = 1f;
+            switch (currentLevel) {
+                case 1:
+                    _strokeCol = lightExColor;
+                    break;
+                case 2:
+                    _strokeCol = heavyExColor;
+                    break;
+            }
+        }
     }
 }
