@@ -102,6 +102,7 @@ public class BreathController : MonoBehaviour
             isIncreasing = true;
         }
     }
+    
     private void clickUp(PointerUpEvent e) {
         if (!inactive) Evaluate();
     }
