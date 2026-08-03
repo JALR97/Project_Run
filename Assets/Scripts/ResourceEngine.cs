@@ -111,7 +111,7 @@ public class ResourceEngine : MonoBehaviour
         _volition = 100f;
         _stamina = 100f;
         
-        staminaBar.maxValue = _stamina;
+        staminaBar.maxValue = MaxStamina;
         volitionBar.maxValue = _volition;
         /*
          Future implementation
@@ -162,7 +162,7 @@ public class ResourceEngine : MonoBehaviour
     }
 
     public void StaminaBonus(float amount) {
-        _stamina = Mathf.Clamp(_stamina + amount, 0f, staminaBar.maxValue);
+        _stamina = Mathf.Clamp(_stamina + amount, 0f, MaxStamina);
     }
     
     private void DetermineSlope() {
@@ -192,10 +192,18 @@ public class ResourceEngine : MonoBehaviour
         VolitionUITick();
     }
 
+    [Header("Stamina breaks")]
+    [SerializeField] private int staminaBreak1 = 50;
+    [SerializeField] private int staminaBreak2 = 20;
+    [SerializeField] private ExhaustionLevel exhaustion;
+    private float MaxStamina = 100f;
+
+    [SerializeField] private float staminaLimitedModifier = 0.85f;
+    [SerializeField] private float speedLimitedModifier = 0.80f;
+    
     private void StaminaTick() {
         if (_boosting) 
             return;
-
         
         multiplier = 1;
         switch (_speedCategory) {
@@ -277,24 +285,38 @@ public class ResourceEngine : MonoBehaviour
                 break;
         }
         
-        
         float adjustedRate = staminaUseRate * multiplier;
-        //Do we still involve the actual speed number?
-        //_stamina += _realSpeed * multiplier  Time.deltaTime;
-        _stamina += adjustedRate * Time.deltaTime;
+        if (staminaBreak1 == -1 && adjustedRate > 0f) {
+            adjustedRate *= staminaLimitedModifier;
+        }
+        
+        _stamina = Mathf.Clamp(_stamina + adjustedRate * Time.deltaTime, 0f, MaxStamina);
+        
+        if (_stamina <= staminaBreak1) {
+            exhaustion.BrokenStaminaLimit(1);
+            staminaBar.fillRect.GetComponent<Image>().color = Color.yellow;
+            MaxStamina = staminaBreak1;
+            staminaBreak1 = -1;
+            StaminaBonus(-5f);
+            _targetSpeedChangeRate *= speedLimitedModifier;
+            
+        }else if (_stamina <= staminaBreak2) {
+            exhaustion.BrokenStaminaLimit(2);
+            staminaBar.fillRect.GetComponent<Image>().color = Color.red;
+            MaxStamina = staminaBreak2;
+            staminaBreak2 = -1;
+            _acceleration *= speedLimitedModifier;
+        }
     }
+    
     private void VolitionUITick() {
         volitionBar.value = _volition;
     }
-    private void StabilityTick() {
-        
-    }
-    private void TemperatureTick() {
+    /*private void TemperatureTick() {
         _temperature -= Time.deltaTime * coolingFactor;
         _temperature = Mathf.Clamp(_temperature, 37.0f, 40.0f);
-    }
-
-    //private bool exhausted;
+    }*/
+    
     [Header("UI Icons")]
     [SerializeField] private GameObject Up1;
     [SerializeField] private GameObject Up2;
@@ -304,13 +326,10 @@ public class ResourceEngine : MonoBehaviour
     [SerializeField] private GameObject Down3;
     private GameObject previousIcon;
     private int previousMult = 1;
+    
     private void StaminaUITick() {
         staminaBar.value = _stamina;
-        /*if (_stamina < staminaBar.maxValue*0.2f && !exhausted) {
-            _maxSpeed /= 2;
-            exhausted = true;
-            staminaBar.fillRect.GetComponent<Image>().color = Color.red;
-        }*/
+
         if (previousMult != multiplier) {
             previousIcon?.SetActive(false);
             switch (multiplier) {

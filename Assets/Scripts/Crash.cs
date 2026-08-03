@@ -18,6 +18,7 @@ public class Crash : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Runner") && player.GetPlayerState() == PlayerController.PlayerState.Running) {
             crashed = true;
+            player.SwitchState(PlayerController.PlayerState.Running);
             player.SwitchState(PlayerController.PlayerState.Crashed);
             AudioSource.PlayClipAtPoint(buzzer, Camera.main.transform.position);
         }

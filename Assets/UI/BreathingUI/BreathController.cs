@@ -1,4 +1,5 @@
 using System;
+using PrimeTween;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,17 +11,20 @@ public class BreathController : MonoBehaviour
         MISS
     }
     
+    [SerializeField] ExhaustionLevel exhaustion;
+    
     [SerializeField] float _innerRadius = 25f;
     [SerializeField] float _outerRadius = 50f;
     [SerializeField] float _thickness = 10f;
     [SerializeField] Color _strokeCol = Color.red;
+    [SerializeField] bool _hideInner = true;
 
     [Header("UI Colors")] 
     [SerializeField] private Color emptyColor;
     [SerializeField] private Color lightExColor;
     [SerializeField] private Color heavyExColor;
     [SerializeField] private Color goodBreathColor;
-    [SerializeField] private Color excellentBreathColor;
+    [SerializeField] private Color perfectBreathColor;
     
     [SerializeField] float _minRange = 40f;
     [SerializeField] float _maxRange = 60f;
@@ -34,8 +38,11 @@ public class BreathController : MonoBehaviour
     bool inactive = true;
     bool greyedOut;
     float t_progressAlongRange;
+    private int hitsCount;
+    private int hitsScore;
 
     VisualElement lungsButton;
+    
     private void OnEnable() {
         var uiDoc = GetComponent<UIDocument>();
         var root = uiDoc.rootVisualElement;
@@ -45,11 +52,13 @@ public class BreathController : MonoBehaviour
         lungsButton.RegisterCallback<PointerDownEvent>(clickDown);
         lungsButton.RegisterCallback<PointerUpEvent>(clickUp);
         _currentRadius = _minRange;
+        ExhaustionLevelUpdate(exhaustion.CurrentLevel);
     }
 
     private void OnDisable() {
         lungsButton.UnregisterCallback<PointerDownEvent>(clickDown);
         lungsButton.UnregisterCallback<PointerUpEvent>(clickUp);
+        Miss();
     }
 
     private void Update() {
@@ -69,37 +78,64 @@ public class BreathController : MonoBehaviour
             isIncreasing = false;
     }
 
+    private Tween _missTween;
+    public void Crash(){Miss();}
     private void Miss() {
+        hitsCount = 0;
+        hitsScore = 0;
         inactive = true;
         isIncreasing = false;
         _currentRadius = _minRange;
+        if (!_missTween.isAlive) {
+            AnimateColor(emptyColor);
+        }
+        _hideInner = true;
+    }
+    
+    private void Hit(EvalCategory category) {
+        if (_hideInner) _hideInner = false;
+        
+        Color col;
+        if (category == EvalCategory.PERFECT) {
+            col = perfectBreathColor;
+            hitsScore += 2;
+        }
+        else {
+            col = goodBreathColor;
+            hitsScore += 1;
+        }
+        isIncreasing = !isIncreasing;
+        
+        hitsCount++;
+        HitsCountCheck();
+        AnimateColor(col);
     }
 
-    private void Hit(EvalCategory category) {
-        //Some FX
-        //Some tracking of good hits plus effects on resources
-        isIncreasing = !isIncreasing;
-        Debug.Log($"Hit: {category}");
+    private void HitsCountCheck() {
+        if (hitsCount >= 2) {
+            exhaustion.BreathControl(hitsScore);
+            hitsCount = 0;
+            hitsScore = 0;
+
+            if (exhaustion.CurrentLevel == 0) {
+                inactive = true;
+                isIncreasing = true;
+                _currentRadius = _minRange;
+                _hideInner = true;
+            }
+        }
     }
     
     private void Evaluate() {
-        if (isIncreasing) {
-            if (_currentRadius >= _outerRadius - _perfectOffset &&  _currentRadius <= _outerRadius + _perfectOffset ) {
-                Hit(EvalCategory.PERFECT);
-            }else if (_currentRadius >= _outerRadius - _goodOffset && _currentRadius <= _outerRadius + _goodOffset) {
-                Hit(EvalCategory.GOOD);
-            }
-            else
-                Miss();
+        float evalRadius = isIncreasing ? _outerRadius : _innerRadius;
+        
+        if (_currentRadius >= evalRadius - _perfectOffset &&  _currentRadius <= evalRadius + _perfectOffset ) {
+            Hit(EvalCategory.PERFECT);
+        }else if (_currentRadius >= evalRadius - _goodOffset && _currentRadius <= evalRadius + _goodOffset) {
+            Hit(EvalCategory.GOOD);
         }
-        else {
-            if (_currentRadius >= _innerRadius - _perfectOffset &&  _currentRadius <= _innerRadius + _perfectOffset ) {
-                Hit(EvalCategory.PERFECT);
-            }else if (_currentRadius >= _innerRadius - _goodOffset && _currentRadius <= _innerRadius + _goodOffset) {
-                Hit(EvalCategory.GOOD);
-            }else
-                Miss();
-        }
+        else
+            Miss();
     }
     
     private void clickDown(PointerDownEvent e) {
@@ -119,13 +155,17 @@ public class BreathController : MonoBehaviour
     }
 
     public void ExhaustionLevelUpdate(int currentLevel) {
+        if (!gameObject.activeInHierarchy) { Debug.Log(enabled); return; }
+        
         if (currentLevel == 0) {
+            hitsScore = 0;
             greyedOut = true;
             _strokeCol = emptyColor;
             lungsButton.style.opacity = 0.5f;
         }
         else {
             greyedOut = false;
+            hitsScore = 0;
             lungsButton.style.opacity = 1f;
             switch (currentLevel) {
                 case 1:
@@ -136,5 +176,21 @@ public class BreathController : MonoBehaviour
                     break;
             }
         }
+    }
+    
+    [SerializeField] private float animSpeed = 0.2f;
+    private void AnimateColor(Color color) {
+        _missTween = Tween.Custom(
+            startValue: _strokeCol,
+            endValue: color,
+            duration: animSpeed,
+            onValueChange: value =>
+            {
+                _strokeCol = value;
+            },
+            cycles: 2,
+            cycleMode: CycleMode.Yoyo,
+            ease: Ease.OutSine
+        );
     }
 }

@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject attentionCam;
     [SerializeField] private GameObject lockedonCam;
     private CinemachineOrbitalFollow attentionFollow;
+    
     public void SwitchCam (Cameras camID){
         walkingCam.SetActive(false);
         railCam.SetActive(false);

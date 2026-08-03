@@ -1,3 +1,4 @@
+using PrimeTween;
 using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,7 +9,9 @@ public partial class Lungs : VisualElement
     float _innerRadius = 25f;
     float _outerRadius = 50f;
     float _thickness = 10f;
+    float _innerThickness = 0f;
     Color _strokeCol = Color.red;
+    bool _hideInner = true;
 
     //Exposed values
     [UxmlAttribute, CreateProperty]
@@ -40,6 +43,34 @@ public partial class Lungs : VisualElement
             _strokeCol = value;
             MarkDirtyRepaint(); }
     }
+    [UxmlAttribute, CreateProperty]
+    public bool hideInner{
+        get => _hideInner;
+        set {
+            if (_hideInner == value)
+                return;
+            
+            _hideInner = value;
+            if (!_hideInner) {
+                Tween.Custom(
+                    startValue: 0f,
+                    endValue: _thickness,
+                    onValueChange: value => {
+                        _innerThickness = value;
+                        MarkDirtyRepaint();
+                    },
+                    ease: Ease.OutCubic,
+                    duration: 0.3f,
+                    startDelay: 0.2f
+                );
+            }
+            else {
+                _innerThickness = 0f;
+                MarkDirtyRepaint();
+            }
+
+        }
+    }
     
     public Lungs() {
         generateVisualContent += GenerateVisualContent;
@@ -54,8 +85,13 @@ public partial class Lungs : VisualElement
         painter.BeginPath();
         painter.Arc(new Vector2(width * 0.5f, height * 0.5f),_innerRadius,0, 360);
         painter.ClosePath();
-        painter.strokeColor = _strokeCol;
-        painter.lineWidth = _thickness;
+        if (!_hideInner) {
+            painter.strokeColor = _strokeCol;
+            painter.lineWidth = _innerThickness;
+            painter.Stroke();
+        }
+        painter.lineWidth = 0.5f;
+        painter.strokeColor = Color.white;
         painter.Stroke();
         
         //Outer
@@ -64,6 +100,10 @@ public partial class Lungs : VisualElement
         painter.Arc(new Vector2(width * 0.5f, height * 0.5f),_outerRadius,0, 360);
         painter.ClosePath();
         painter.strokeColor = _strokeCol;
+        painter.Stroke();
+        
+        painter.lineWidth = 0.5f;
+        painter.strokeColor = Color.white;
         painter.Stroke();
     }
 

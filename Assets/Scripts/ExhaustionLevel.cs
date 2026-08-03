@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ExhaustionLevel : MonoBehaviour {
@@ -24,7 +25,12 @@ public class ExhaustionLevel : MonoBehaviour {
     
     [SerializeField] private int sprintsToExhaustion = 3;
     private int _exSprintCount;
-    
+
+    [SerializeField] private int DEBUGstartingEx;
+    private void Start() {
+        IncreaseExhaustion(DEBUGstartingEx);
+    }
+
     public void ExtendedSprint() {
         //Grace period check
         if (_gracePeriodUntil != 0f) {
@@ -47,14 +53,14 @@ public class ExhaustionLevel : MonoBehaviour {
     }
 
     private void IncreaseExhaustion(int amount = 1) {
-        if (_currentExhaustion == maxExhaustionLevel) {
+        if (_currentExhaustion == maxExhaustionLevel || amount == 0) {
             return;
         }else if (amount == 2) {
             _currentExhaustion = maxExhaustionLevel;
         }else
             _currentExhaustion++;
         
-        //update breathUI
+        _breathController.ExhaustionLevelUpdate(_currentExhaustion);
         PlaySoundCue();
     }
 
@@ -74,7 +80,6 @@ public class ExhaustionLevel : MonoBehaviour {
         //Reduce exhaustion and give stamina regen based on the execution value
         var staminaBonus = baseBonus + execution * pointMultiplier;
         _engine.StaminaBonus(staminaBonus);
-        _breathController.ExhaustionLevelUpdate(_currentExhaustion);
         LowerExhaustion();
     }
 

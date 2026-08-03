@@ -1,10 +1,5 @@
-using System;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.Splines;
 
 public class PlayerController : MonoBehaviour
@@ -57,7 +52,6 @@ public class PlayerController : MonoBehaviour
     //state stuff
     private PlayerState playerState = PlayerState.Walking;
     private RunningMode runningMode;
-    
     
     //Balance variables - serialized 
     [SerializeField] private float speed;

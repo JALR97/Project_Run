@@ -2229,6 +2229,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1349648352}
+  - {fileID: 703008349}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &222371232
@@ -2257,7 +2258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RunnerSpawner
   refContainer: {fileID: 334402151}
   runnerPrefab: {fileID: 2442353428906050250, guid: 2bee0447ccdb96f46868fc166f023a85, type: 3}
-  runnersNum: 1
+  runnersNum: 50
   verticalOffset: 0.3
   horizontalOffsetMin: 0.15
   horizontalOffsetMax: 0.5
@@ -10406,6 +10407,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676588728}
   m_CullTransparentMesh: 1
+--- !u!1 &703008348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 703008349}
+  - component: {fileID: 703008350}
+  m_Layer: 0
+  m_Name: Reseter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &703008349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703008348}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -16.68198, y: 0, z: 37.49065}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 222371231}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &703008350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703008348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ec54f90c8f11b4ab0cb5d9702a8bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &709605442
 GameObject:
   m_ObjectHideFlags: 0
@@ -16497,13 +16542,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59aeaba386078f24f981e5def430b8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreathController
+  exhaustion: {fileID: 1878252764}
   _innerRadius: 45
   _outerRadius: 85
-  _thickness: 12
-  _strokeCol: {r: 0.21050186, g: 0.82641506, b: 0.5886814, a: 1}
+  _thickness: 13
+  _strokeCol: {r: 0.9019608, g: 0.5936109, b: 0.23137252, a: 1}
+  _hideInner: 1
+  emptyColor: {r: 1, g: 1, b: 1, a: 0}
+  lightExColor: {r: 0.9019608, g: 0.5936109, b: 0.23137252, a: 1}
+  heavyExColor: {r: 0.89433956, g: 0.17380556, b: 0.29611328, a: 1}
+  goodBreathColor: {r: 0.1650053, g: 0.60279804, b: 0.8490566, a: 1}
+  perfectBreathColor: {r: 0.21176472, g: 0.82745105, b: 0.5882353, a: 1}
   _minRange: 30
   _maxRange: 100
-  _currentRadius: 30
+  _currentRadius: 48.283432
   radiusChangeSpeed: 24
   radiusSpeedCurve:
     serializedVersion: 2
@@ -16519,13 +16571,13 @@ MonoBehaviour:
       outWeight: 0.33677465
     - serializedVersion: 3
       time: 0.5004513
-      value: 1.0009155
-      inSlope: -0.6341353
-      outSlope: 0.5928048
+      value: 0.7
+      inSlope: -3.14509
+      outSlope: 4.328776
       tangentMode: 1
       weightedMode: 0
-      inWeight: 0.12438597
-      outWeight: 0.16778797
+      inWeight: 0.06601163
+      outWeight: 0.04633019
     - serializedVersion: 3
       time: 1
       value: 1.5
@@ -16538,8 +16590,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _perfectOffset: 1
+  _perfectOffset: 1.5
   _goodOffset: 7
+  animSpeed: 0.2
 --- !u!1 &1422685109
 GameObject:
   m_ObjectHideFlags: 0
@@ -18429,7 +18482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1552641627
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21468,6 +21521,7 @@ GameObject:
   - component: {fileID: 1878252761}
   - component: {fileID: 1878252762}
   - component: {fileID: 1878252763}
+  - component: {fileID: 1878252764}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -21623,6 +21677,11 @@ MonoBehaviour:
   runningSpeedTH: 2
   sprintingSpeedTH: 2.7
   _realSpeed: 0
+  staminaBreak1: 50
+  staminaBreak2: 20
+  exhaustion: {fileID: 1878252764}
+  staminaLimitedModifier: 0.85
+  speedLimitedModifier: 0.8
   Up1: {fileID: 1605091619}
   Up2: {fileID: 2049440865}
   Up3: {fileID: 676424800}
@@ -21648,6 +21707,28 @@ MonoBehaviour:
   crashCooldown: 2
   flashInterval: 0.15
   buzzer: {fileID: 8300000, guid: 8fb95e68d64fe814db7667c01249e960, type: 3}
+--- !u!114 &1878252764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878252757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7495714d6c09f43b9c51e1157d466b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExhaustionLevel
+  _engine: {fileID: 1878252762}
+  _breathController: {fileID: 1412918858}
+  baseBonus: 5
+  pointMultiplier: 2
+  _lightExSound: {fileID: 8300000, guid: 831e04141fe1eb7449a48ec19f27a198, type: 3}
+  _heavyExSound: {fileID: 8300000, guid: 63112f8d4c32bd6488bc0667c66cc754, type: 3}
+  maxExhaustionLevel: 2
+  gracePeriodLenght: 10
+  sprintsToExhaustion: 3
+  DEBUGstartingEx: 0
 --- !u!1 &1912500036
 GameObject:
   m_ObjectHideFlags: 0
