@@ -19,6 +19,7 @@ public class InventoryManager : MonoBehaviour {
     //Inner work
     private int Sips = 3;
     private float waterTimer;
+    private float cooldownUntil;
     private bool inCooldown;
 
     public void ShoeEffect() {
@@ -33,7 +34,10 @@ public class InventoryManager : MonoBehaviour {
     public void TakeSip() {
         if (Sips > 0 && !inCooldown) {
             Sips--;
-            inCooldown = Sips > 0;
+            if (Sips > 0) {
+                cooldownUntil = Time.time + sipCooldown;
+                inCooldown = true;
+            }
             waterButton.interactable = false;
             waterText.text = $"Water bottle\n{Sips}/{maxSips} sips";
             resourceEngine.WaterBoost();
@@ -42,15 +46,13 @@ public class InventoryManager : MonoBehaviour {
 
     private void Update() {
         if (inCooldown) {
-            waterTimer += Time.deltaTime;
-            if (waterTimer >= sipCooldown) {
-                waterTimer = 0f;
+            if (Time.time >= cooldownUntil) {
                 inCooldown = false;
                 waterButton.interactable = true;
                 waterCooldownText.text = "";
             }
             else {
-                waterCooldownText.text = "cooldown: "+(sipCooldown - waterTimer).ToString("0");
+                waterCooldownText.text = "cooldown: "+(cooldownUntil - Time.time).ToString("0");
             }
         }
     }

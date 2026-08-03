@@ -21705,6 +21705,7 @@ MonoBehaviour:
   baseMat: {fileID: 2100000, guid: 69da76321b6f2214b9fcf10ac2176d19, type: 2}
   flashMat: {fileID: 2100000, guid: 63739a56cd9de4f43b04a9b70362bf8d, type: 2}
   crashCooldown: 2
+  graceTime: 1
   flashInterval: 0.15
   buzzer: {fileID: 8300000, guid: 8fb95e68d64fe814db7667c01249e960, type: 3}
 --- !u!114 &1878252764

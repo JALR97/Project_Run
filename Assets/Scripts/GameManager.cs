@@ -93,7 +93,11 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject attentionCam;
     [SerializeField] private GameObject lockedonCam;
     private CinemachineOrbitalFollow attentionFollow;
-    
+
+    public void ResetAttentionCam() {
+        attentionFollow.HorizontalAxis.Value = 0f;
+        attentionFollow.VerticalAxis.Value = 30f;
+    }
     public void SwitchCam (Cameras camID){
         walkingCam.SetActive(false);
         railCam.SetActive(false);
@@ -108,8 +112,7 @@ public class GameManager : MonoBehaviour {
                 railCam.SetActive(true);
                 break;
             case Cameras.attention:
-                attentionFollow.HorizontalAxis.Value = 0f;
-                attentionFollow.VerticalAxis.Value = 17.5f;
+                //ResetAttentionCam()
                 attentionCam.SetActive(true);
                 break;
             case Cameras.lockedon:

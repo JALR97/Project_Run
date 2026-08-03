@@ -10,15 +10,20 @@ public class Crash : MonoBehaviour
     [SerializeField] Material flashMat;
     
     [SerializeField] float crashCooldown;
+    [SerializeField] float graceTime;
+    private float graceUntil;
     [SerializeField] float flashInterval;
     [SerializeField] AudioClip buzzer;
     private float timer;
     private bool crashed;
+    
 
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Runner") && player.GetPlayerState() == PlayerController.PlayerState.Running) {
+            if (Time.time <= graceUntil) {
+                return;
+            }
             crashed = true;
-            player.SwitchState(PlayerController.PlayerState.Running);
             player.SwitchState(PlayerController.PlayerState.Crashed);
             AudioSource.PlayClipAtPoint(buzzer, Camera.main.transform.position);
         }
@@ -35,6 +40,7 @@ public class Crash : MonoBehaviour
                 timer = 0;
                 player.SwitchState(PlayerController.PlayerState.Running);
                 renderer.material = baseMat;
+                graceUntil = Time.time + graceTime;
             }
         }
     }

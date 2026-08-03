@@ -9,6 +9,7 @@ public class Observer : MonoBehaviour
     [SerializeField] private float maxDistance = 8f;
     [SerializeField] private float observeTime = 2.5f;
     [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private Transform player;
 
     [SerializeField] private InputActionReference clickAction;
     
@@ -46,6 +47,7 @@ public class Observer : MonoBehaviour
             }
         }
         if (CurrentTarget && clickAction.action.WasPressedThisFrame()) {
+            
             lockedOn = true; 
             GameManager.Instance.LockOnTarget(CurrentTarget.transform);
             GameManager.Instance.SwitchCam(GameManager.Cameras.lockedon);
@@ -59,8 +61,8 @@ public class Observer : MonoBehaviour
             if (Physics.SphereCast(ray, radius, out RaycastHit hit, maxDistance, targetLayer, QueryTriggerInteraction.Ignore))
             {
                 if (!CurrentTarget) {
-                    CurrentTarget = hit.collider.gameObject;
-                    CurrentTarget.GetComponent<Landmark>().Highlight();
+                   CurrentTarget = hit.collider.gameObject;
+                   CurrentTarget.GetComponent<Landmark>().Highlight();
                 }
                 //There's a possible bug here if the player somehow is looking at one landmark and then another one in the next frame
                 //I think it's impossible for this to happen but good to note here.

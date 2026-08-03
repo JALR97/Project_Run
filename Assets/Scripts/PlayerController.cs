@@ -178,7 +178,13 @@ public class PlayerController : MonoBehaviour
     //Inner process - private
     private void ModeSwitchUI(InputAction.CallbackContext callbackContext) {
         if (playerState == PlayerState.Running) {
-            _modeSwitchUI.SetActive(true);    
+            if (runningMode == RunningMode.Control) {
+                _inventoryUI.SetActive(true);
+                SwitchMode(RunningMode.Information);
+            }else if (runningMode == RunningMode.Information) {
+                _inventoryUI.SetActive(false);
+                SwitchMode(RunningMode.Control);
+            }
         }
     }
     
@@ -189,15 +195,17 @@ public class PlayerController : MonoBehaviour
         playerState = newState;
         switch (newState)
         {
-            case PlayerState.Inactive:
-                
+            case PlayerState.Crashed:
+                _inventoryUI.SetActive(false);
+                if (runningMode == RunningMode.Information) {
+                    GameManager.Instance.ResetAttentionCam();
+                }
                 break;
             case PlayerState.Walking:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.walking);
                 break;
             case PlayerState.Running:
                 SwitchMode(RunningMode.Control);
-                GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
                 engine.StartRun();
                 break;
         }
@@ -208,19 +216,19 @@ public class PlayerController : MonoBehaviour
         switch (newMode)
         {
             case RunningMode.Control:
-                GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
+                GameManager.Instance.SwitchCam(GameManager.Cameras.attention);
                 CursorLocker.LockCursor();
                 _crosshairUI.SetActive(false);
                 _observer.SetActive(false);
                 _inventoryUI.SetActive(false);
-                break;
-            case RunningMode.Attention:
-                GameManager.Instance.SwitchCam(GameManager.Cameras.attention);
-                CursorLocker.LockCursor();
-                _crosshairUI.SetActive(true);
                 _observer.SetActive(true);
-                _inventoryUI.SetActive(false);
+                _crosshairUI.SetActive(true);
                 break;
+            /*case RunningMode.Attention:
+                GameManager.Instance.SwitchCam(GameManager.Cameras.attention);
+                CursorLocker.LockCursor();                                
+                _inventoryUI.SetActive(false);
+                break;*/
             case RunningMode.Information:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.rail);
                 CursorLocker.UnlockCursor();
