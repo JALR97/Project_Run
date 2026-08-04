@@ -72,8 +72,9 @@ public class ResourceEngine : MonoBehaviour
     [SerializeField] private float staminaUseRate = 1f;
     [SerializeField] private float staminaWaterBoost = 20f;
     [SerializeField] private float volitionRegen = 0.3f;
+    [SerializeField] private float volitionUseRate = 1.5f;
     [SerializeField] private float volitionLandmarkBoost = 20f;
-    [SerializeField] private float coolingFactor = 0.2f;
+    //[SerializeField] private float coolingFactor = 0.2f;
     [SerializeField] private AudioClip chime;
     [SerializeField] private AudioClip chime2;
     
@@ -366,6 +367,10 @@ public class ResourceEngine : MonoBehaviour
     }
     private void VolitionTick() {
         _volition += Time.deltaTime * volitionRegen;
+        if (playerController.channelingVolition) {
+            _volition -= Time.deltaTime * volitionUseRate;
+        }
+        _volition = Mathf.Clamp(_volition, 0f, volitionBar.maxValue);
     }
     
     private void SpeedometerTickUI() {
@@ -380,6 +385,9 @@ public class ResourceEngine : MonoBehaviour
     }
 
     //External interaction - public
+    public void ResetSpeed() {
+        _realSpeed = _targetSpeed = _minSpeed;
+    }
     public void StartRun() {
         _running = true;
     }
@@ -417,7 +425,7 @@ public class ResourceEngine : MonoBehaviour
     }
 
     public void Nitro() {
-        if (!_canBoost || _volition < boostConsumption) 
+        if (!_canBoost) 
             return; 
         
         Debug.Log("Nitro");
@@ -426,17 +434,10 @@ public class ResourceEngine : MonoBehaviour
         
         _targetSpeed = _realSpeed = _maxSpeed;
         
-        float startVal = _volition;
-        float endVal = _volition - boostConsumption;
         Image staminaFill = staminaBar.transform.GetChild(1).GetChild(0).GetComponent<Image>(); //Could give problems later
         
         
         AudioSource.PlayClipAtPoint(chime2, Camera.main.transform.position);
-        
-        Anim.Instance.Animate(
-            UIbarTickTime,
-            t => { _volition = Mathf.Lerp(startVal, endVal, t); },
-            Anim.EaseOutCubic);
         
         Color imgC = staminaFill.color; //All this for the bar flashing
         Color.RGBToHSV(imgC, out float h, out float s, out float v);

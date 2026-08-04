@@ -38,12 +38,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActionReference movementAction;
     [SerializeField] private InputActionReference speedAction;
     [SerializeField] private InputActionReference modeSwitchAction;
-    [SerializeField] private InputActionReference boostAction;
+    [SerializeField] private InputActionReference HypeAction;
 
 //-----------------//Variables//-----------------//
 //Process variables - private
     //movement stuff
     private bool _isGrounded = false;
+    public bool channelingVolition {get; private set;}
     private Vector3 adjustedDirection;
     private Vector3 railDirection;
     private float _turnSmoothSpeed;
@@ -122,9 +123,10 @@ public class PlayerController : MonoBehaviour
             
             //Strafing and speed - Player in control mode
             if (runningMode == RunningMode.Control) {
-                if (boostAction.action.WasPressedThisFrame()) {
-                    engine.Nitro();
-                }
+                if (HypeAction.action.IsPressed()) {
+                    channelingVolition = true;
+                }else
+                    channelingVolition = false;
                 
                 float horizontal = Input.GetAxisRaw("Horizontal");
                 if (horizontal > 0f) {
@@ -197,6 +199,7 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerState.Crashed:
                 _inventoryUI.SetActive(false);
+                engine.ResetSpeed();
                 if (runningMode == RunningMode.Information) {
                     GameManager.Instance.ResetAttentionCam();
                 }

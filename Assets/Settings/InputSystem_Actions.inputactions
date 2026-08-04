@@ -43,7 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Boost",
+                    "name": "VolitionUse",
                     "type": "Button",
                     "id": "c9018709-3a93-477a-8812-b13c3b0bfdc8",
                     "expectedControlType": "",
@@ -223,7 +223,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Boost",
+                    "action": "VolitionUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

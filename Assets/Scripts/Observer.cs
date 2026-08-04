@@ -31,7 +31,7 @@ public class Observer : MonoBehaviour
                 OnLandmarkSeen?.Invoke();
                 Debug.Log("seen");
                 GameManager.Instance.SwitchCam(GameManager.Cameras.attention);
-                CurrentTarget.GetComponent<Landmark>().Un_Highlight();
+                CurrentTarget.GetComponent<Landmark>().Observed();
                 CurrentTarget = null;
             }
             else {
@@ -49,6 +49,7 @@ public class Observer : MonoBehaviour
         if (CurrentTarget && clickAction.action.WasPressedThisFrame()) {
             
             lockedOn = true; 
+            
             GameManager.Instance.LockOnTarget(CurrentTarget.transform);
             GameManager.Instance.SwitchCam(GameManager.Cameras.lockedon);
             //All the code to assign the lock on and everything else
@@ -62,7 +63,16 @@ public class Observer : MonoBehaviour
             {
                 if (!CurrentTarget) {
                    CurrentTarget = hit.collider.gameObject;
-                   CurrentTarget.GetComponent<Landmark>().Highlight();
+                   if ((CurrentTarget.transform.position - transform.position).magnitude > maxDistance) {
+                       CurrentTarget = null;
+                       return;
+                   }
+
+                   if (!CurrentTarget.GetComponent<Landmark>().Highlight()) {
+                       CurrentTarget = null;
+                       return;
+                   }
+                   
                 }
                 //There's a possible bug here if the player somehow is looking at one landmark and then another one in the next frame
                 //I think it's impossible for this to happen but good to note here.

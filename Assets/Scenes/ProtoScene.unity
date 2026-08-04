@@ -15397,6 +15397,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
+  player: {fileID: 0}
   clickAction: {fileID: 1407939578967048635, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &1332441309
 GameObject:
@@ -21624,7 +21625,7 @@ MonoBehaviour:
   movementAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   speedAction: {fileID: 9214743311941462116, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   modeSwitchAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  boostAction: {fileID: -1749665504179851960, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  HypeAction: {fileID: -1749665504179851960, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   speed: 1.8
   strafeSpeedMod: 0.8
   gravity: 0.8
@@ -21659,8 +21660,8 @@ MonoBehaviour:
   staminaUseRate: 0.65
   staminaWaterBoost: 20
   volitionRegen: 0.3
+  volitionUseRate: 1.5
   volitionLandmarkBoost: 20
-  coolingFactor: 0.2
   chime: {fileID: 8300000, guid: 611278b66861c1e4faf57f351c40717c, type: 3}
   chime2: {fileID: 8300000, guid: 22d4f6701b939454fa8736da8cd004a7, type: 3}
   slopeFlatThreshold: 5
