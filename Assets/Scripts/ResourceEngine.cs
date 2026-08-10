@@ -40,7 +40,7 @@ public class ResourceEngine : MonoBehaviour
     
 //-----------------//Variables//-----------------//
 //Process variables - private
-    private int multiplier = 1;
+    private float multiplier = 1;
     
     //temporarily public for testing:
     public float _targetSpeed = 2f;
@@ -201,6 +201,10 @@ public class ResourceEngine : MonoBehaviour
 
     [SerializeField] private float staminaLimitedModifier = 0.85f;
     [SerializeField] private float speedLimitedModifier = 0.80f;
+    [Header("Hyped Modifier")] 
+    [SerializeField] private float StaminaRegenVolitionMod = 1.5f;
+    [SerializeField] private float StaminaUseVolitionMod = 0.8f;
+    
     
     private void StaminaTick() {
         if (_boosting) 
@@ -220,10 +224,10 @@ public class ResourceEngine : MonoBehaviour
                         multiplier = 3;
                         break;
                     case SlopesCat.LightUp:
-                        multiplier = 0;
+                        multiplier = 1;
                         break;
                     case SlopesCat.SteepUp:
-                        multiplier = -1;
+                        multiplier = 0;
                         break;
                 }
                 break;
@@ -285,6 +289,12 @@ public class ResourceEngine : MonoBehaviour
                 }
                 break;
         }
+
+        if (_speedCategory == SpeedCategory.WALKING && playerController.channelingVolition) {
+            multiplier *= StaminaRegenVolitionMod;
+        }else if (multiplier < 0f && playerController.channelingVolition) {
+            multiplier *= StaminaUseVolitionMod;
+        }
         
         float adjustedRate = staminaUseRate * multiplier;
         if (staminaBreak1 == -1 && adjustedRate > 0f) {
@@ -326,7 +336,7 @@ public class ResourceEngine : MonoBehaviour
     [SerializeField] private GameObject Down2;
     [SerializeField] private GameObject Down3;
     private GameObject previousIcon;
-    private int previousMult = 1;
+    private float previousMult = 1;
     
     private void StaminaUITick() {
         staminaBar.value = _stamina;
