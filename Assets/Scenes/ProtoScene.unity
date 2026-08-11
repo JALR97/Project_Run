@@ -10050,10 +10050,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19bea01180273e4b92554ee3d9d35b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  decreaseColor: {r: 1, g: 0, b: 0, a: 1}
-  increaseColor: {r: 0, g: 1, b: 0, a: 1}
   pattern: {fileID: 773305423}
-  scrollSpeed: 2
+  decreaseColor: {r: 0.8113208, g: 0.26788884, b: 0.26788884, a: 0.31764707}
+  increaseColor: {r: 0.20784315, g: 0.78823537, b: 0.5254902, a: 1}
+  intensityAlpha1: 0.2
+  intensityAlpha2: 0.4
+  intensityAlpha3: 0.6
+  scrollSpeed1: 1
+  scrollSpeed2: 2
+  scrollSpeed3: 3
+  tweenDuration: 0.3
 --- !u!1 &666265877
 GameObject:
   m_ObjectHideFlags: 0
@@ -21714,7 +21720,7 @@ MonoBehaviour:
   staminaUseRate: 0.65
   staminaWaterBoost: 20
   volitionRegen: 0.3
-  volitionUseRate: 1.5
+  volitionUseRate: 5
   volitionLandmarkBoost: 20
   chime: {fileID: 8300000, guid: 611278b66861c1e4faf57f351c40717c, type: 3}
   chime2: {fileID: 8300000, guid: 22d4f6701b939454fa8736da8cd004a7, type: 3}
@@ -21745,6 +21751,7 @@ MonoBehaviour:
   Down1: {fileID: 1481861470}
   Down2: {fileID: 676588728}
   Down3: {fileID: 2046345983}
+  barScroller: {fileID: 656766843}
 --- !u!114 &1878252763
 MonoBehaviour:
   m_ObjectHideFlags: 0

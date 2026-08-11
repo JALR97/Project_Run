@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -338,39 +339,23 @@ public class ResourceEngine : MonoBehaviour
     private GameObject previousIcon;
     private float previousMult = 1;
     
+    [SerializeField] private PatternScroller barScroller;
     private void StaminaUITick() {
         staminaBar.value = _stamina;
-
+        if (_boosting) {
+            barScroller.Stop();
+            return;
+        }
         if (previousMult != multiplier) {
-            previousIcon?.SetActive(false);
-            switch (multiplier) {
-                case 0:
-                    break;
-                case 1:
-                    Up1.SetActive(true);
-                    previousIcon = Up1;
-                    break;
-                case 2:
-                    Up2.SetActive(true);
-                    previousIcon = Up2;
-                    break;
-                case 3:
-                    Up3.SetActive(true);
-                    previousIcon = Up3;
-                    break;
-                case -1:
-                    Down1.SetActive(true);
-                    previousIcon = Down1;
-                    break;
-                case -2:
-                    Down2.SetActive(true);
-                    previousIcon = Down2;
-                    break;
-                case -3:
-                case -4:
-                    Down3.SetActive(true);
-                    previousIcon = Down3;
-                    break;
+            if (multiplier == 0) {
+                barScroller.Stop();
+            }
+            else if (multiplier > 0) {
+                barScroller.Scroll(PatternScroller.RIGHT, (int)multiplier);
+            }
+            else {
+                var clampedMultiplier = Mathf.Clamp(multiplier, -3f, -1f);
+                barScroller.Scroll(PatternScroller.LEFT, (int)Mathf.Abs(clampedMultiplier));
             }
             previousMult = multiplier;
         }
@@ -444,8 +429,7 @@ public class ResourceEngine : MonoBehaviour
         
         _targetSpeed = _realSpeed = _maxSpeed;
         
-        Image staminaFill = staminaBar.transform.GetChild(1).GetChild(0).GetComponent<Image>(); //Could give problems later
-        
+        Image staminaFill = staminaBar.transform.GetChild(2).GetChild(0).GetComponent<Image>(); //Could give problems later
         
         AudioSource.PlayClipAtPoint(chime2, Camera.main.transform.position);
         
