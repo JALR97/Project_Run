@@ -44,9 +44,12 @@ public class ResourceEngine : MonoBehaviour
     private float multiplier = 1;
     
     //temporarily public for testing:
-    public float _targetSpeed = 2f;
-    public float _acceleration = 0.2f;
-    public float _deceleration = -0.5f;
+    private float _targetSpeed = 2f;
+    private float _acceleration = 0.2f;
+    [SerializeField] private readonly float _startingAcceleration = 0.2f;
+    [SerializeField] private float channellingAcceleration = 0.5f;
+    [SerializeField] private float exhaustedAcceleration = 0.1f;
+    private float _deceleration = -0.5f;
 
     public SlopesCat currentSlope;
     //testing
@@ -89,6 +92,7 @@ public class ResourceEngine : MonoBehaviour
     [SerializeField] private float _targetSpeedChangeRate = 0.5f;
     [SerializeField] private float _maxSpeed = 3f;
     [SerializeField] private float _minSpeed = 1.3f;
+    [SerializeField] private float volitionMaxSpeed;
     
     [Header("UI")]
     [SerializeField] private float UIbarTickTime = 0.2f;
@@ -130,17 +134,25 @@ public class ResourceEngine : MonoBehaviour
     private void OnDestroy() {
         Observer.OnLandmarkSeen -= LandmarkBoost;
     }
-
+    
     private void Update() {
-        //Debug.Log(_realSpeed);
+        if (exhaustion.CurrentLevel != 0) {
+            _acceleration = exhaustedAcceleration;
+        }else if (playerController.channelingVolition) {
+            _acceleration = channellingAcceleration;
+        }
+        else
+            _acceleration = _startingAcceleration;
+        
         DetermineSlope();
-        //Debug.Log(currentSlope);
-        //Debug.Log(_speedCategory);
         
         if (_running) {
             DetermineSpeedCategory();
             StaminaTick();
             VolitionTick();
+            if (_realSpeed > _maxSpeed && !playerController.channelingVolition) {
+                CheckMaxSpeed();
+            }
             if (!Mathf.Approximately(_targetSpeed, _realSpeed)) {
                 _realSpeed += ((_targetSpeed - _realSpeed) >= 0f ? _acceleration : _deceleration) * Time.deltaTime;
             }
@@ -152,7 +164,8 @@ public class ResourceEngine : MonoBehaviour
             //Debug.Log($"slope: {_slope}, slopeDir: {_slopeDirection}");
         }
     }
-    
+
+
     //Inner process - private
     private void LandmarkBoost() {
         _volition = Mathf.Clamp(_volition + volitionLandmarkBoost, 0f, volitionBar.maxValue);
@@ -395,7 +408,10 @@ public class ResourceEngine : MonoBehaviour
     public void Accelerate(int intensity) {
         switch (intensity) {
             case 0: //Slow increase - hold
-                _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, _maxSpeed);
+                if (playerController.channelingVolition && exhaustion.CurrentLevel == 0) {
+                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, _maxSpeed);
+                }else
+                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, volitionMaxSpeed);
                 break;
             case 1: //Small jump - double tap
                 
@@ -404,6 +420,10 @@ public class ResourceEngine : MonoBehaviour
                 
                 break;           
         }
+    }
+    
+    private void CheckMaxSpeed() {
+        _targetSpeed = Mathf.Clamp(_targetSpeed, _minSpeed, _maxSpeed);
     }
     
     public void Decelerate(int intensity) {
