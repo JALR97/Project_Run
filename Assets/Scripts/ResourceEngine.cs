@@ -346,16 +346,17 @@ public class ResourceEngine : MonoBehaviour
             barScroller.Stop();
             return;
         }
-        if (previousMult != multiplier) {
+        if (!Mathf.Approximately(previousMult, multiplier)) {
             if (multiplier == 0) {
                 barScroller.Stop();
             }
             else if (multiplier > 0) {
-                barScroller.Scroll(PatternScroller.RIGHT, (int)multiplier);
+                var clampedMultiplier = Mathf.Clamp(multiplier, 1f, 3f);
+                barScroller.Scroll(PatternScroller.RIGHT, Mathf.CeilToInt(clampedMultiplier));
             }
             else {
                 var clampedMultiplier = Mathf.Clamp(multiplier, -3f, -1f);
-                barScroller.Scroll(PatternScroller.LEFT, (int)Mathf.Abs(clampedMultiplier));
+                barScroller.Scroll(PatternScroller.LEFT, Mathf.CeilToInt(Mathf.Abs(clampedMultiplier)));
             }
             previousMult = multiplier;
         }
