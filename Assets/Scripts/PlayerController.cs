@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
             
             //Strafing and speed - Player in control mode
             if (runningMode == RunningMode.Control) {
-                if (HypeAction.action.IsPressed()) {
+                if (HypeAction.action.IsPressed() && engine.HasVolition()) {
                     channelingVolition = true;
                 }else
                     channelingVolition = false;
@@ -200,16 +200,19 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Crashed:
                 _inventoryUI.SetActive(false);
                 engine.ResetSpeed();
+                engine.Crashed(true);
                 if (runningMode == RunningMode.Information) {
                     GameManager.Instance.ResetAttentionCam();
                 }
                 break;
             case PlayerState.Walking:
                 GameManager.Instance.SwitchCam(GameManager.Cameras.walking);
+                _inventoryUI.SetActive(false);
                 break;
             case PlayerState.Running:
                 SwitchMode(RunningMode.Control);
                 engine.StartRun();
+                engine.Crashed(false);
                 break;
         }
     }

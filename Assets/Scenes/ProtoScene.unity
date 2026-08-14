@@ -21709,6 +21709,7 @@ MonoBehaviour:
   targetUI: {fileID: 2087668480}
   staminaBar: {fileID: 656766842}
   volitionBar: {fileID: 1639235037}
+  _startingAcceleration: 0.2
   channellingAcceleration: 0.5
   exhaustedAcceleration: 0.1
   currentSlope: 0
@@ -21731,6 +21732,7 @@ MonoBehaviour:
   _maxSpeed: 3
   _minSpeed: 1.3
   volitionMaxSpeed: 3.5
+  exhaustedMaxSpeed: 2.5
   UIbarTickTime: 0.2
   UIbarFlashSpeed: 22
   UIbarFlashForce: 0.25
@@ -21786,7 +21788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExhaustionLevel
   _engine: {fileID: 1878252762}
   _breathController: {fileID: 1412918858}
-  baseBonus: 5
+  baseBonus: 3
   pointMultiplier: 2
   _lightExSound: {fileID: 8300000, guid: 831e04141fe1eb7449a48ec19f27a198, type: 3}
   _heavyExSound: {fileID: 8300000, guid: 63112f8d4c32bd6488bc0667c66cc754, type: 3}

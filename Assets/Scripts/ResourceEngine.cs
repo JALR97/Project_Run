@@ -46,7 +46,7 @@ public class ResourceEngine : MonoBehaviour
     //temporarily public for testing:
     private float _targetSpeed = 2f;
     private float _acceleration = 0.2f;
-    [SerializeField] private readonly float _startingAcceleration = 0.2f;
+    [SerializeField] private float _startingAcceleration = 0.2f;
     [SerializeField] private float channellingAcceleration = 0.5f;
     [SerializeField] private float exhaustedAcceleration = 0.1f;
     private float _deceleration = -0.5f;
@@ -93,6 +93,7 @@ public class ResourceEngine : MonoBehaviour
     [SerializeField] private float _maxSpeed = 3f;
     [SerializeField] private float _minSpeed = 1.3f;
     [SerializeField] private float volitionMaxSpeed;
+    [SerializeField] private float exhaustedMaxSpeed;
     
     [Header("UI")]
     [SerializeField] private float UIbarTickTime = 0.2f;
@@ -150,9 +151,10 @@ public class ResourceEngine : MonoBehaviour
             DetermineSpeedCategory();
             StaminaTick();
             VolitionTick();
-            if (_realSpeed > _maxSpeed && !playerController.channelingVolition) {
+            if (_realSpeed > _maxSpeed && !playerController.channelingVolition && !_boosting) {
                 CheckMaxSpeed();
             }
+            
             if (!Mathf.Approximately(_targetSpeed, _realSpeed)) {
                 _realSpeed += ((_targetSpeed - _realSpeed) >= 0f ? _acceleration : _deceleration) * Time.deltaTime;
                 
@@ -166,6 +168,13 @@ public class ResourceEngine : MonoBehaviour
         }
     }
 
+    public void Crashed(bool isCrashed) {
+        if (isCrashed) {
+            barScroller.Stop();
+            _running = false;
+        }else
+            _running = true;
+    }
 
     //Inner process - private
     private void LandmarkBoost() {
@@ -324,14 +333,14 @@ public class ResourceEngine : MonoBehaviour
             MaxStamina = staminaBreak1;
             staminaBreak1 = -1;
             StaminaBonus(-5f);
-            _targetSpeedChangeRate *= speedLimitedModifier;
             
         }else if (_stamina <= staminaBreak2) {
             exhaustion.BrokenStaminaLimit(2);
             staminaBar.fillRect.GetComponent<Image>().color = Color.red;
             MaxStamina = staminaBreak2;
             staminaBreak2 = -1;
-            _acceleration *= speedLimitedModifier;
+            exhaustedAcceleration *= speedLimitedModifier;
+            _startingAcceleration *= speedLimitedModifier;
         }
     }
     
@@ -376,11 +385,19 @@ public class ResourceEngine : MonoBehaviour
         }
     }
     private void VolitionTick() {
-        _volition += Time.deltaTime * volitionRegen;
         if (playerController.channelingVolition) {
             _volition -= Time.deltaTime * volitionUseRate;
-        }
+        }else
+            _volition += Time.deltaTime * volitionRegen;
+        
         _volition = Mathf.Clamp(_volition, 0f, volitionBar.maxValue);
+    }
+
+    public bool HasVolition() {
+        if (_volition > volitionUseRate) {
+            return true;
+        }
+        return false;
     }
     
     private void SpeedometerTickUI() {
@@ -412,9 +429,12 @@ public class ResourceEngine : MonoBehaviour
     public void Accelerate(int intensity) {
         switch (intensity) {
             case 0: //Slow increase - hold
-                if (playerController.channelingVolition && exhaustion.CurrentLevel == 0) {
+                if (playerController.channelingVolition && exhaustion.CurrentLevel == 0 || _boosting) {
                     _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, volitionMaxSpeed);
-                }else
+                }else if (exhaustion.CurrentLevel != 0) {
+                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, exhaustedMaxSpeed);
+                }
+                else
                     _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, _maxSpeed);
                 break;
             case 1: //Small jump - double tap
@@ -452,7 +472,7 @@ public class ResourceEngine : MonoBehaviour
         _boosting = true;
         _canBoost = false;
         
-        _targetSpeed = _realSpeed = _maxSpeed;
+        _targetSpeed = _realSpeed = volitionMaxSpeed;
         
         Image staminaFill = staminaBar.transform.GetChild(2).GetChild(0).GetComponent<Image>(); //Could give problems later
         
