@@ -155,6 +155,7 @@ public class ResourceEngine : MonoBehaviour
             }
             if (!Mathf.Approximately(_targetSpeed, _realSpeed)) {
                 _realSpeed += ((_targetSpeed - _realSpeed) >= 0f ? _acceleration : _deceleration) * Time.deltaTime;
+                
             }
 
             if (_boosting) {
@@ -386,9 +387,12 @@ public class ResourceEngine : MonoBehaviour
         float speedRatio = (_realSpeed - _minSpeed) / (_maxSpeed - _minSpeed);
         float targetRatio = (_targetSpeed - _minSpeed) / (_maxSpeed - _minSpeed);
         //Debug.Log($"ratio = {_realSpeed} - {_minSpeed} / {_maxSpeed} - {_minSpeed} == {speedRatio}");
-        float rotationNeedle = speedRatio * (-160f) + 80f;
-        float rotationTarget = targetRatio * (-160f) + 80f;
+        float rotationNeedle = speedRatio * (-130f) + 80f;
+        float rotationTarget = targetRatio * (-130f) + 80f;
         
+        rotationNeedle = Mathf.Clamp(rotationNeedle, -80f, 80f); 
+        rotationTarget = Mathf.Clamp(rotationTarget, -80f, 80f); 
+                
         needleUI.localEulerAngles = new Vector3(0f, 0f, rotationNeedle);
         targetUI.localEulerAngles = new Vector3(0f, 0f, rotationTarget);
     }
@@ -409,9 +413,9 @@ public class ResourceEngine : MonoBehaviour
         switch (intensity) {
             case 0: //Slow increase - hold
                 if (playerController.channelingVolition && exhaustion.CurrentLevel == 0) {
-                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, _maxSpeed);
-                }else
                     _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, volitionMaxSpeed);
+                }else
+                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, _maxSpeed);
                 break;
             case 1: //Small jump - double tap
                 
