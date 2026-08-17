@@ -872,7 +872,7 @@ GameObject:
   - component: {fileID: 63867571}
   - component: {fileID: 63867574}
   - component: {fileID: 63867573}
-  - component: {fileID: 63867572}
+  - component: {fileID: 63867575}
   m_Layer: 7
   m_Name: track-road-wide-straight (2)
   m_TagString: Track
@@ -895,27 +895,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: 6.266, y: -96.502, z: -0.713}
---- !u!65 &63867572
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63867570}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &63867573
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -972,6 +951,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 63867570}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &63867575
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63867570}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &71801084
 GameObject:
@@ -2591,7 +2592,7 @@ GameObject:
   - component: {fileID: 289538803}
   - component: {fileID: 289538806}
   - component: {fileID: 289538805}
-  - component: {fileID: 289538804}
+  - component: {fileID: 289538807}
   m_Layer: 7
   m_Name: track-road-wide-straight (24)
   m_TagString: Track
@@ -2614,27 +2615,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -3.835, y: 84.817, z: 0}
---- !u!65 &289538804
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 289538802}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &289538805
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2691,6 +2671,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289538802}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &289538807
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289538802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &298742813
 GameObject:
@@ -3033,7 +3035,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3059,7 +3061,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.037652787, y: 0.5722561, z: -0.026315792, w: 0.81878734}
+  m_LocalRotation: {x: 0.03765279, y: 0.5722561, z: -0.026315793, w: 0.81878734}
   m_LocalPosition: {x: 0.14414454, y: 0.5985813, z: 0.05256653}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3525,7 +3527,7 @@ GameObject:
   - component: {fileID: 351769300}
   - component: {fileID: 351769303}
   - component: {fileID: 351769302}
-  - component: {fileID: 351769301}
+  - component: {fileID: 351769304}
   m_Layer: 7
   m_Name: track-road-wide-straight (16)
   m_TagString: Track
@@ -3548,27 +3550,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -22.08, y: 74.332, z: -0.595}
---- !u!65 &351769301
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351769299}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &351769302
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3626,6 +3607,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351769299}
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &351769304
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351769299}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &355160911
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,7 +3640,7 @@ GameObject:
   - component: {fileID: 355160912}
   - component: {fileID: 355160915}
   - component: {fileID: 355160914}
-  - component: {fileID: 355160913}
+  - component: {fileID: 355160916}
   m_Layer: 7
   m_Name: track-road-wide-straight
   m_TagString: Track
@@ -3660,27 +3663,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: 6.064, y: -106.001, z: -1.735}
---- !u!65 &355160913
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355160911}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &355160914
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3737,6 +3719,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355160911}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &355160916
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355160911}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &362180464
 GameObject:
@@ -5558,7 +5562,7 @@ GameObject:
   - component: {fileID: 513319508}
   - component: {fileID: 513319511}
   - component: {fileID: 513319510}
-  - component: {fileID: 513319509}
+  - component: {fileID: 513319512}
   m_Layer: 7
   m_Name: track-road-wide-straight (25)
   m_TagString: Track
@@ -5581,27 +5585,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -25.55, y: 88.121, z: 0.896}
---- !u!65 &513319509
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513319507}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &513319510
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5658,6 +5641,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513319507}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &513319512
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513319507}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &527532294
 GameObject:
@@ -5922,7 +5927,7 @@ GameObject:
   - component: {fileID: 540984415}
   - component: {fileID: 540984418}
   - component: {fileID: 540984417}
-  - component: {fileID: 540984416}
+  - component: {fileID: 540984419}
   m_Layer: 7
   m_Name: track-road-wide-straight (3)
   m_TagString: Track
@@ -5945,27 +5950,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -4.444, y: 4.747, z: -1.259}
---- !u!65 &540984416
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540984414}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &540984417
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6022,6 +6006,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540984414}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &540984419
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540984414}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &545113627
 GameObject:
@@ -9490,7 +9496,7 @@ GameObject:
   - component: {fileID: 624912215}
   - component: {fileID: 624912218}
   - component: {fileID: 624912217}
-  - component: {fileID: 624912216}
+  - component: {fileID: 624912219}
   m_Layer: 7
   m_Name: track-road-wide-straight (15)
   m_TagString: Track
@@ -9513,27 +9519,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -22.08, y: -28.707, z: -0.595}
---- !u!65 &624912216
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624912214}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &624912217
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9590,6 +9575,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624912214}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &624912219
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624912214}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &628321461
 GameObject:
@@ -9715,7 +9722,7 @@ GameObject:
   - component: {fileID: 631976259}
   - component: {fileID: 631976262}
   - component: {fileID: 631976261}
-  - component: {fileID: 631976260}
+  - component: {fileID: 631976263}
   m_Layer: 7
   m_Name: track-road-wide-straight (13)
   m_TagString: Track
@@ -9738,27 +9745,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -25.966, y: -28.662, z: -0.614}
---- !u!65 &631976260
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631976258}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &631976261
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9815,6 +9801,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631976258}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &631976263
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631976258}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &653581987
 GameObject:
@@ -10910,7 +10918,7 @@ GameObject:
   - component: {fileID: 745105061}
   - component: {fileID: 745105064}
   - component: {fileID: 745105063}
-  - component: {fileID: 745105062}
+  - component: {fileID: 745105065}
   m_Layer: 7
   m_Name: track-road-wide-straight (18)
   m_TagString: Track
@@ -10933,27 +10941,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -22.08, y: 74.332, z: -0.595}
---- !u!65 &745105062
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745105060}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &745105063
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11010,6 +10997,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745105060}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &745105065
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745105060}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &746713008
 GameObject:
@@ -12973,7 +12982,7 @@ GameObject:
   - component: {fileID: 954923535}
   - component: {fileID: 954923538}
   - component: {fileID: 954923537}
-  - component: {fileID: 954923536}
+  - component: {fileID: 954923539}
   m_Layer: 7
   m_Name: track-road-wide-straight (9)
   m_TagString: Track
@@ -12996,27 +13005,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -6.183, y: 48.475, z: -1.074}
---- !u!65 &954923536
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954923534}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &954923537
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13073,6 +13061,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954923534}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &954923539
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954923534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &962488109
 GameObject:
@@ -13560,7 +13570,7 @@ GameObject:
   - component: {fileID: 1014556090}
   - component: {fileID: 1014556093}
   - component: {fileID: 1014556092}
-  - component: {fileID: 1014556091}
+  - component: {fileID: 1014556094}
   m_Layer: 7
   m_Name: track-road-wide-straight (20)
   m_TagString: Track
@@ -13583,27 +13593,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -8.233, y: 79.468, z: 0.563}
---- !u!65 &1014556091
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014556089}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1014556092
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13660,6 +13649,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014556089}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1014556094
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014556089}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1023481837
 GameObject:
@@ -14758,7 +14769,7 @@ GameObject:
   - component: {fileID: 1144513260}
   - component: {fileID: 1144513263}
   - component: {fileID: 1144513262}
-  - component: {fileID: 1144513261}
+  - component: {fileID: 1144513264}
   m_Layer: 7
   m_Name: track-road-wide-straight (6)
   m_TagString: Track
@@ -14781,27 +14792,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -4.444, y: 4.747, z: -1.259}
---- !u!65 &1144513261
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144513259}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1144513262
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14859,6 +14849,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144513259}
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1144513264
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144513259}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1155395874
 GameObject:
   m_ObjectHideFlags: 0
@@ -14870,7 +14882,7 @@ GameObject:
   - component: {fileID: 1155395875}
   - component: {fileID: 1155395878}
   - component: {fileID: 1155395877}
-  - component: {fileID: 1155395876}
+  - component: {fileID: 1155395879}
   m_Layer: 7
   m_Name: track-road-wide-straight (4)
   m_TagString: Track
@@ -14893,27 +14905,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -4.444, y: 4.747, z: -1.259}
---- !u!65 &1155395876
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155395874}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1155395877
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14970,6 +14961,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155395874}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1155395879
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155395874}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1218201311
 GameObject:
@@ -15545,7 +15558,7 @@ GameObject:
   - component: {fileID: 1332441310}
   - component: {fileID: 1332441313}
   - component: {fileID: 1332441312}
-  - component: {fileID: 1332441311}
+  - component: {fileID: 1332441314}
   m_Layer: 7
   m_Name: track-road-wide-straight (1)
   m_TagString: Track
@@ -15568,27 +15581,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: 6.288, y: -94.377, z: -0.48}
---- !u!65 &1332441311
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1332441309}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1332441312
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15645,6 +15637,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332441309}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1332441314
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332441309}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1338295355
 GameObject:
@@ -16220,7 +16234,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -16247,7 +16261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359542038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.037652787, y: 0.5722561, z: -0.026315788, w: 0.8187874}
+  m_LocalRotation: {x: 0.03765279, y: 0.5722561, z: -0.02631579, w: 0.8187874}
   m_LocalPosition: {x: 0.14414454, y: 0.5985813, z: 0.05256653}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16505,7 +16519,7 @@ GameObject:
   - component: {fileID: 1404666834}
   - component: {fileID: 1404666837}
   - component: {fileID: 1404666836}
-  - component: {fileID: 1404666835}
+  - component: {fileID: 1404666838}
   m_Layer: 7
   m_Name: track-road-wide-straight (10)
   m_TagString: Track
@@ -16528,27 +16542,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -6.183, y: 48.475, z: -1.074}
---- !u!65 &1404666835
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404666833}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1404666836
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16605,6 +16598,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404666833}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1404666838
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404666833}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1412918855
 GameObject:
@@ -16740,7 +16755,7 @@ GameObject:
   - component: {fileID: 1422685110}
   - component: {fileID: 1422685113}
   - component: {fileID: 1422685112}
-  - component: {fileID: 1422685111}
+  - component: {fileID: 1422685114}
   m_Layer: 7
   m_Name: track-road-wide-straight (31)
   m_TagString: Track
@@ -16763,27 +16778,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -1.015, y: 27.015, z: 1.261}
---- !u!65 &1422685111
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422685109}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1422685112
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16840,6 +16834,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422685109}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1422685114
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422685109}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1425694697
 GameObject:
@@ -17480,7 +17496,7 @@ GameObject:
   - component: {fileID: 1497516334}
   - component: {fileID: 1497516337}
   - component: {fileID: 1497516336}
-  - component: {fileID: 1497516335}
+  - component: {fileID: 1497516338}
   m_Layer: 7
   m_Name: track-road-wide-straight (26)
   m_TagString: Track
@@ -17503,27 +17519,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: 0.251, y: 70.411, z: 0.771}
---- !u!65 &1497516335
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1497516333}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1497516336
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17580,6 +17575,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497516333}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1497516338
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497516333}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1505148201
 GameObject:
@@ -18043,7 +18060,7 @@ GameObject:
   - component: {fileID: 1533367652}
   - component: {fileID: 1533367655}
   - component: {fileID: 1533367654}
-  - component: {fileID: 1533367653}
+  - component: {fileID: 1533367656}
   m_Layer: 7
   m_Name: track-road-wide-straight (8)
   m_TagString: Track
@@ -18066,27 +18083,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -6.183, y: 48.475, z: -1.074}
---- !u!65 &1533367653
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533367651}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1533367654
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18143,6 +18139,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533367651}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1533367656
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533367651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1542665712
 GameObject:
@@ -18717,7 +18735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   maxSips: 3
   staminaRegen: 15
-  sipCooldown: 1
+  sipCooldown: 15
   waterText: {fileID: 402246316}
   waterCooldownText: {fileID: 826028776}
   waterButton: {fileID: 1482637051}
@@ -18922,7 +18940,7 @@ GameObject:
   - component: {fileID: 1586566161}
   - component: {fileID: 1586566164}
   - component: {fileID: 1586566163}
-  - component: {fileID: 1586566162}
+  - component: {fileID: 1586566165}
   m_Layer: 7
   m_Name: track-road-wide-straight (17)
   m_TagString: Track
@@ -18945,27 +18963,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -22.08, y: 74.332, z: -0.595}
---- !u!65 &1586566162
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586566160}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1586566163
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19022,6 +19019,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586566160}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1586566165
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586566160}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1605091619
 GameObject:
@@ -19287,7 +19306,7 @@ GameObject:
   - component: {fileID: 1647621436}
   - component: {fileID: 1647621439}
   - component: {fileID: 1647621438}
-  - component: {fileID: 1647621437}
+  - component: {fileID: 1647621440}
   m_Layer: 7
   m_Name: track-road-wide-straight (30)
   m_TagString: Track
@@ -19310,27 +19329,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -1.015, y: 27.015, z: 1.261}
---- !u!65 &1647621437
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647621435}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1647621438
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19387,6 +19385,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647621435}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1647621440
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647621435}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1685597489
 GameObject:
@@ -19512,7 +19532,7 @@ GameObject:
   - component: {fileID: 1687473396}
   - component: {fileID: 1687473399}
   - component: {fileID: 1687473398}
-  - component: {fileID: 1687473397}
+  - component: {fileID: 1687473400}
   m_Layer: 7
   m_Name: track-road-wide-straight (34)
   m_TagString: Track
@@ -19535,27 +19555,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -1.84, y: -120.655, z: -1.225}
---- !u!65 &1687473397
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687473395}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1687473398
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19612,6 +19611,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687473395}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1687473400
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687473395}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1691374600
 GameObject:
@@ -19862,7 +19883,7 @@ GameObject:
   - component: {fileID: 1722720144}
   - component: {fileID: 1722720147}
   - component: {fileID: 1722720146}
-  - component: {fileID: 1722720145}
+  - component: {fileID: 1722720148}
   m_Layer: 7
   m_Name: track-road-wide-straight (12)
   m_TagString: Track
@@ -19885,27 +19906,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -9.956, y: 48.547, z: -1.084}
---- !u!65 &1722720145
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722720143}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1722720146
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19963,6 +19963,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722720143}
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1722720148
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722720143}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1724834070
 GameObject:
   m_ObjectHideFlags: 0
@@ -19974,7 +19996,7 @@ GameObject:
   - component: {fileID: 1724834071}
   - component: {fileID: 1724834074}
   - component: {fileID: 1724834073}
-  - component: {fileID: 1724834072}
+  - component: {fileID: 1724834075}
   m_Layer: 7
   m_Name: track-road-wide-straight (33)
   m_TagString: Track
@@ -19997,27 +20019,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: 3.45, y: 106.403, z: 0.805}
---- !u!65 &1724834072
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1724834070}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1724834073
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20075,6 +20076,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724834070}
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1724834075
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724834070}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1729768085
 GameObject:
   m_ObjectHideFlags: 0
@@ -20086,7 +20109,7 @@ GameObject:
   - component: {fileID: 1729768086}
   - component: {fileID: 1729768089}
   - component: {fileID: 1729768088}
-  - component: {fileID: 1729768087}
+  - component: {fileID: 1729768090}
   m_Layer: 7
   m_Name: track-road-wide-straight (28)
   m_TagString: Track
@@ -20109,27 +20132,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -5.122, y: 47.459, z: 0.828}
---- !u!65 &1729768087
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729768085}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1729768088
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20186,6 +20188,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729768085}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1729768090
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729768085}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1734675879
 GameObject:
@@ -20667,7 +20691,7 @@ GameObject:
   - component: {fileID: 1773942881}
   - component: {fileID: 1773942884}
   - component: {fileID: 1773942883}
-  - component: {fileID: 1773942882}
+  - component: {fileID: 1773942885}
   m_Layer: 7
   m_Name: track-road-wide-straight (5)
   m_TagString: Track
@@ -20690,27 +20714,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: 0, y: 3.08, z: 0}
---- !u!65 &1773942882
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773942880}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1773942883
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20767,6 +20770,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773942880}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1773942885
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773942880}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1780346837
 GameObject:
@@ -21467,7 +21492,7 @@ GameObject:
   - component: {fileID: 1847910024}
   - component: {fileID: 1847910027}
   - component: {fileID: 1847910026}
-  - component: {fileID: 1847910025}
+  - component: {fileID: 1847910028}
   m_Layer: 7
   m_Name: track-road-wide-straight (27)
   m_TagString: Track
@@ -21490,27 +21515,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -1.466, y: 53.108, z: 0.686}
---- !u!65 &1847910025
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847910023}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1847910026
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21567,6 +21571,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847910023}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1847910028
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847910023}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1878252757
 GameObject:
@@ -21710,8 +21736,9 @@ MonoBehaviour:
   staminaBar: {fileID: 656766842}
   volitionBar: {fileID: 1639235037}
   _startingAcceleration: 0.2
-  channellingAcceleration: 0.5
+  channellingAcceleration: 1
   exhaustedAcceleration: 0.1
+  _deceleration: -1
   currentSlope: 0
   boostDuration: 3
   boostCooldown: 5
@@ -21728,11 +21755,13 @@ MonoBehaviour:
   SlopeSteepThreshold: 18
   _slope: 0
   _slopeDirection: 0
-  _targetSpeedChangeRate: 0.6
+  _targetSpeedIncreaseRate: 0.5
+  _targetSpeedDecreaeRate: 1.5
   _maxSpeed: 3
   _minSpeed: 1.3
   volitionMaxSpeed: 3.5
   exhaustedMaxSpeed: 2.5
+  deadSpeed: 1.3
   UIbarTickTime: 0.2
   UIbarFlashSpeed: 22
   UIbarFlashForce: 0.25
@@ -21995,7 +22024,7 @@ GameObject:
   - component: {fileID: 1934400176}
   - component: {fileID: 1934400179}
   - component: {fileID: 1934400178}
-  - component: {fileID: 1934400177}
+  - component: {fileID: 1934400180}
   m_Layer: 7
   m_Name: track-road-wide-straight (14)
   m_TagString: Track
@@ -22018,27 +22047,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -22.08, y: -28.707, z: -0.595}
---- !u!65 &1934400177
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934400175}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1934400178
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22096,6 +22104,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934400175}
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1934400180
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934400175}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1935883834
 GameObject:
   m_ObjectHideFlags: 0
@@ -22107,7 +22137,7 @@ GameObject:
   - component: {fileID: 1935883835}
   - component: {fileID: 1935883838}
   - component: {fileID: 1935883837}
-  - component: {fileID: 1935883836}
+  - component: {fileID: 1935883839}
   m_Layer: 7
   m_Name: track-road-wide-straight (29)
   m_TagString: Track
@@ -22130,27 +22160,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -1.215, y: 36.847, z: 1.069}
---- !u!65 &1935883836
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935883834}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1935883837
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22207,6 +22216,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935883834}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1935883839
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935883834}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1939573685
 GameObject:
@@ -22481,7 +22512,7 @@ GameObject:
   - component: {fileID: 1952501077}
   - component: {fileID: 1952501080}
   - component: {fileID: 1952501079}
-  - component: {fileID: 1952501078}
+  - component: {fileID: 1952501081}
   m_Layer: 7
   m_Name: track-road-wide-straight (23)
   m_TagString: Track
@@ -22504,27 +22535,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -19.879, y: 85.576, z: 2.002}
---- !u!65 &1952501078
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1952501076}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1952501079
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22582,6 +22592,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952501076}
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1952501081
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952501076}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1966939365
 GameObject:
   m_ObjectHideFlags: 0
@@ -22593,7 +22625,7 @@ GameObject:
   - component: {fileID: 1966939366}
   - component: {fileID: 1966939369}
   - component: {fileID: 1966939368}
-  - component: {fileID: 1966939367}
+  - component: {fileID: 1966939370}
   m_Layer: 7
   m_Name: track-road-wide-straight (32)
   m_TagString: Track
@@ -22616,27 +22648,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -1.051, y: 28.67, z: 1.231}
---- !u!65 &1966939367
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1966939365}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1966939368
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22694,6 +22705,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966939365}
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1966939370
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966939365}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &1977254214
 GameObject:
   m_ObjectHideFlags: 0
@@ -22705,7 +22738,7 @@ GameObject:
   - component: {fileID: 1977254215}
   - component: {fileID: 1977254218}
   - component: {fileID: 1977254217}
-  - component: {fileID: 1977254216}
+  - component: {fileID: 1977254219}
   m_Layer: 7
   m_Name: track-road-wide-straight (21)
   m_TagString: Track
@@ -22728,27 +22761,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: 0, y: 70.112, z: 0}
---- !u!65 &1977254216
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977254214}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &1977254217
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22806,6 +22818,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977254214}
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &1977254219
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977254214}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &2008598586
 GameObject:
   m_ObjectHideFlags: 0
@@ -22817,7 +22851,7 @@ GameObject:
   - component: {fileID: 2008598587}
   - component: {fileID: 2008598590}
   - component: {fileID: 2008598589}
-  - component: {fileID: 2008598588}
+  - component: {fileID: 2008598591}
   m_Layer: 7
   m_Name: track-road-wide-straight (19)
   m_TagString: Track
@@ -22840,27 +22874,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -8.233, y: 74.578, z: 0.563}
---- !u!65 &2008598588
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008598586}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &2008598589
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22918,6 +22931,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008598586}
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &2008598591
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008598586}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &2014483003
 GameObject:
   m_ObjectHideFlags: 0
@@ -22929,7 +22964,7 @@ GameObject:
   - component: {fileID: 2014483004}
   - component: {fileID: 2014483007}
   - component: {fileID: 2014483006}
-  - component: {fileID: 2014483005}
+  - component: {fileID: 2014483008}
   m_Layer: 7
   m_Name: track-road-wide-straight (7)
   m_TagString: Track
@@ -22952,27 +22987,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: 0, y: 3.08, z: 0}
---- !u!65 &2014483005
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014483003}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &2014483006
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23029,6 +23043,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014483003}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &2014483008
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014483003}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &2033505059
 GameObject:
@@ -23331,7 +23367,7 @@ GameObject:
   - component: {fileID: 2079389559}
   - component: {fileID: 2079389562}
   - component: {fileID: 2079389561}
-  - component: {fileID: 2079389560}
+  - component: {fileID: 2079389563}
   m_Layer: 7
   m_Name: track-road-wide-straight (11)
   m_TagString: Track
@@ -23354,27 +23390,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: -9.956, y: 48.547, z: -1.084}
---- !u!65 &2079389560
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079389558}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &2079389561
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23431,6 +23446,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079389558}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &2079389563
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079389558}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &2081082269
 GameObject:
@@ -24045,7 +24082,7 @@ GameObject:
   - component: {fileID: 2108545452}
   - component: {fileID: 2108545455}
   - component: {fileID: 2108545454}
-  - component: {fileID: 2108545453}
+  - component: {fileID: 2108545456}
   m_Layer: 7
   m_Name: track-road-wide-straight (22)
   m_TagString: Track
@@ -24068,27 +24105,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2033505060}
   m_LocalEulerAnglesHint: {x: 0, y: 70.112, z: 0}
---- !u!65 &2108545453
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2108545451}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0404806, y: 0.08051274, z: 4.02961}
-  m_Center: {x: 0.00087313855, y: 0.06262114, z: 2.0114954}
 --- !u!23 &2108545454
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24145,6 +24161,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108545451}
+  m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
+--- !u!64 &2108545456
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108545451}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4049894538576006380, guid: 400239f7da280264a904873568eb8005, type: 3}
 --- !u!1 &2135716111
 GameObject:

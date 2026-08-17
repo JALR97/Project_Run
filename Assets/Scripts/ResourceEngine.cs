@@ -49,7 +49,7 @@ public class ResourceEngine : MonoBehaviour
     [SerializeField] private float _startingAcceleration = 0.2f;
     [SerializeField] private float channellingAcceleration = 0.5f;
     [SerializeField] private float exhaustedAcceleration = 0.1f;
-    private float _deceleration = -0.5f;
+    [SerializeField] private float _deceleration = -0.5f;
 
     public SlopesCat currentSlope;
     //testing
@@ -89,11 +89,13 @@ public class ResourceEngine : MonoBehaviour
     public float _slopeDirection; //tempPublic
     
     [Header("Speed")]
-    [SerializeField] private float _targetSpeedChangeRate = 0.5f;
+    [SerializeField] private float _targetSpeedIncreaseRate = 0.5f;
+    [SerializeField] private float _targetSpeedDecreaeRate = 1.5f;
     [SerializeField] private float _maxSpeed = 3f;
     [SerializeField] private float _minSpeed = 1.3f;
     [SerializeField] private float volitionMaxSpeed;
     [SerializeField] private float exhaustedMaxSpeed;
+    [SerializeField] private float deadSpeed;
     
     [Header("UI")]
     [SerializeField] private float UIbarTickTime = 0.2f;
@@ -160,10 +162,15 @@ public class ResourceEngine : MonoBehaviour
                 
             }
 
-            if (_boosting) {
+            if (_boosting && !isDead) {
                 _realSpeed = _targetSpeed;
             }
             UIUpdate();
+            if (_stamina < 1f) {
+                _targetSpeed = deadSpeed;
+                isDead = true;
+                barScroller.Stop();
+            }
             //Debug.Log($"slope: {_slope}, slopeDir: {_slopeDirection}");
         }
     }
@@ -187,6 +194,9 @@ public class ResourceEngine : MonoBehaviour
     }
 
     public void StaminaBonus(float amount) {
+        if (isDead) {
+            return;
+        }
         _stamina = Mathf.Clamp(_stamina + amount, 0f, MaxStamina);
     }
     
@@ -231,7 +241,7 @@ public class ResourceEngine : MonoBehaviour
     
     
     private void StaminaTick() {
-        if (_boosting) 
+        if (_boosting || isDead) 
             return;
         
         multiplier = 1;
@@ -369,7 +379,7 @@ public class ResourceEngine : MonoBehaviour
             barScroller.Stop();
             return;
         }
-        if (!Mathf.Approximately(previousMult, multiplier)) {
+        if (!isDead && !Mathf.Approximately(previousMult, multiplier)) {
             if (multiplier == 0) {
                 barScroller.Stop();
             }
@@ -425,17 +435,24 @@ public class ResourceEngine : MonoBehaviour
         _slope = angle;
         _slopeDirection = direction;
     }
-
+    
+    private bool isDead = false;
     public void Accelerate(int intensity) {
         switch (intensity) {
             case 0: //Slow increase - hold
-                if (playerController.channelingVolition && exhaustion.CurrentLevel == 0 || _boosting) {
-                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, volitionMaxSpeed);
+                if (_targetSpeed < _realSpeed) {
+                    _targetSpeed = _realSpeed;
+                }
+                
+                if (isDead) {
+                    _targetSpeed = deadSpeed;
+                }else if (playerController.channelingVolition && exhaustion.CurrentLevel == 0 || _boosting) {
+                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedIncreaseRate * Time.deltaTime, _minSpeed, volitionMaxSpeed);
                 }else if (exhaustion.CurrentLevel != 0) {
-                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, exhaustedMaxSpeed);
+                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedIncreaseRate * Time.deltaTime, _minSpeed, exhaustedMaxSpeed);
                 }
                 else
-                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedChangeRate * Time.deltaTime, _minSpeed, _maxSpeed);
+                    _targetSpeed = Mathf.Clamp(_targetSpeed + _targetSpeedIncreaseRate * Time.deltaTime, _minSpeed, _maxSpeed);
                 break;
             case 1: //Small jump - double tap
                 
@@ -453,7 +470,10 @@ public class ResourceEngine : MonoBehaviour
     public void Decelerate(int intensity) {
         switch (intensity) {
             case 0: //Slow decrease - hold
-                _targetSpeed = Mathf.Clamp(_targetSpeed - _targetSpeedChangeRate * Time.deltaTime, _minSpeed, _maxSpeed);
+                if (_targetSpeed > _realSpeed) {
+                    _targetSpeed = _realSpeed;
+                }
+                _targetSpeed = Mathf.Clamp(_targetSpeed - _targetSpeedDecreaeRate * Time.deltaTime, _minSpeed, _maxSpeed);
                 break;
             case 1: //Small dip - double tap
                 
