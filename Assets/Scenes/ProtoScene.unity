@@ -18734,7 +18734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxSips: 3
-  staminaRegen: 15
+  staminaRegen: 10
   sipCooldown: 15
   waterText: {fileID: 402246316}
   waterCooldownText: {fileID: 826028776}
@@ -21706,6 +21706,7 @@ MonoBehaviour:
   _modeSwitchUI: {fileID: 744632209}
   _crosshairUI: {fileID: 1548808452}
   _inventoryUI: {fileID: 1552641626}
+  staminaColorFlash: {fileID: 1912500040}
   _observer: {fileID: 1302165316}
   engine: {fileID: 1878252762}
   movementAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
@@ -21736,7 +21737,7 @@ MonoBehaviour:
   staminaBar: {fileID: 656766842}
   volitionBar: {fileID: 1639235037}
   _startingAcceleration: 0.2
-  channellingAcceleration: 1
+  channellingAcceleration: 0.6
   exhaustedAcceleration: 0.1
   _deceleration: -1
   currentSlope: 0
@@ -21747,7 +21748,7 @@ MonoBehaviour:
   staminaUseRate: 0.65
   staminaWaterBoost: 20
   volitionRegen: 0.3
-  volitionUseRate: 5
+  volitionUseRate: 7
   volitionLandmarkBoost: 20
   chime: {fileID: 8300000, guid: 611278b66861c1e4faf57f351c40717c, type: 3}
   chime2: {fileID: 8300000, guid: 22d4f6701b939454fa8736da8cd004a7, type: 3}
@@ -21775,7 +21776,7 @@ MonoBehaviour:
   staminaLimitedModifier: 0.85
   speedLimitedModifier: 0.8
   StaminaRegenVolitionMod: 1.5
-  StaminaUseVolitionMod: 0.8
+  StaminaUseVolitionMod: 1
   Up1: {fileID: 1605091619}
   Up2: {fileID: 2049440865}
   Up3: {fileID: 676424800}
@@ -21796,6 +21797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 1878252761}
+  engine: {fileID: 1878252762}
   renderer: {fileID: 1051118545}
   baseMat: {fileID: 2100000, guid: 69da76321b6f2214b9fcf10ac2176d19, type: 2}
   flashMat: {fileID: 2100000, guid: 63739a56cd9de4f43b04a9b70362bf8d, type: 2}
@@ -21836,6 +21838,7 @@ GameObject:
   - component: {fileID: 1912500037}
   - component: {fileID: 1912500039}
   - component: {fileID: 1912500038}
+  - component: {fileID: 1912500040}
   m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
@@ -21900,6 +21903,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912500036}
   m_CullTransparentMesh: 1
+--- !u!114 &1912500040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912500036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8ce91966fe54c4680448786bacb627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIBarFlasher
+  barFill: {fileID: 1912500038}
+  flashSpeed: 0.15
+  flashStrength: 0.4
 --- !u!1 &1925193940
 GameObject:
   m_ObjectHideFlags: 0

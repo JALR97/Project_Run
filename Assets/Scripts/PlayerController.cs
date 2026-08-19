@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _modeSwitchUI;
     [SerializeField] private GameObject _crosshairUI;
     [SerializeField] private GameObject _inventoryUI;
+    [SerializeField] private UIColorFlasher staminaColorFlash;
     [SerializeField] private GameObject _observer;
     
     [SerializeField] private ResourceEngine engine;
@@ -125,8 +126,13 @@ public class PlayerController : MonoBehaviour
             if (runningMode == RunningMode.Control) {
                 if (HypeAction.action.IsPressed() && engine.HasVolition()) {
                     channelingVolition = true;
-                }else
+                    staminaColorFlash.StartFlashing();
+                }
+                else {
                     channelingVolition = false;
+                    staminaColorFlash.StopFlashing();
+                }
+                    
                 
                 float horizontal = Input.GetAxisRaw("Horizontal");
                 if (horizontal > 0f) {
@@ -180,7 +186,7 @@ public class PlayerController : MonoBehaviour
     //Inner process - private
     private void ModeSwitchUI(InputAction.CallbackContext callbackContext) {
         if (playerState == PlayerState.Running) {
-            if (runningMode == RunningMode.Control) {
+            if (runningMode == RunningMode.Control && engine.GetSpeedCategory() == ResourceEngine.SpeedCategory.WALKING) {
                 _inventoryUI.SetActive(true);
                 SwitchMode(RunningMode.Information);
             }else if (runningMode == RunningMode.Information) {

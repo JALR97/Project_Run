@@ -121,6 +121,7 @@ public class ResourceEngine : MonoBehaviour
         _stamina = 100f;
         
         staminaBar.maxValue = MaxStamina;
+        startingMaxStamina = MaxStamina;
         volitionBar.maxValue = _volition;
         /*
          Future implementation
@@ -189,15 +190,19 @@ public class ResourceEngine : MonoBehaviour
         AudioSource.PlayClipAtPoint(chime, Camera.main.transform.position);
     }
     public void WaterBoost() {
-        StaminaBonus(staminaWaterBoost);
+        StaminaBonus(staminaWaterBoost, startingMaxStamina);
         AudioSource.PlayClipAtPoint(chime, Camera.main.transform.position);
     }
 
-    public void StaminaBonus(float amount) {
+    private float startingMaxStamina;
+    public void StaminaBonus(float amount, float max = 0) {
         if (isDead) {
             return;
         }
-        _stamina = Mathf.Clamp(_stamina + amount, 0f, MaxStamina);
+        if (max == 0) {
+            max = MaxStamina;
+        }
+        _stamina = Mathf.Clamp(_stamina + amount, 0f, max);
     }
     
     private void DetermineSlope() {
@@ -220,6 +225,10 @@ public class ResourceEngine : MonoBehaviour
             }else
                 _speedCategory = SpeedCategory.SPRINTING;
         }
+    }
+
+    public SpeedCategory GetSpeedCategory() {
+        return _speedCategory;
     }
     private void UIUpdate() {
         SpeedometerTickUI();
@@ -334,8 +343,13 @@ public class ResourceEngine : MonoBehaviour
         if (staminaBreak1 == -1 && adjustedRate > 0f) {
             adjustedRate *= staminaLimitedModifier;
         }
-        
-        _stamina = Mathf.Clamp(_stamina + adjustedRate * Time.deltaTime, 0f, MaxStamina);
+
+        if (_stamina > MaxStamina && _stamina < startingMaxStamina) {
+            if (adjustedRate < 0f) {
+                _stamina = Mathf.Clamp(_stamina + adjustedRate * Time.deltaTime, 0f, startingMaxStamina);    
+            }
+        }else
+            _stamina = Mathf.Clamp(_stamina + adjustedRate * Time.deltaTime, 0f, MaxStamina);
         
         if (_stamina <= staminaBreak1) {
             exhaustion.BrokenStaminaLimit(1);
@@ -343,7 +357,8 @@ public class ResourceEngine : MonoBehaviour
             MaxStamina = staminaBreak1;
             staminaBreak1 = -1;
             StaminaBonus(-5f);
-            
+            _targetSpeed = exhaustedMaxSpeed;
+
         }else if (_stamina <= staminaBreak2) {
             exhaustion.BrokenStaminaLimit(2);
             staminaBar.fillRect.GetComponent<Image>().color = Color.red;
@@ -351,6 +366,7 @@ public class ResourceEngine : MonoBehaviour
             staminaBreak2 = -1;
             exhaustedAcceleration *= speedLimitedModifier;
             _startingAcceleration *= speedLimitedModifier;
+            _targetSpeed = exhaustedMaxSpeed;
         }
     }
     
@@ -383,7 +399,7 @@ public class ResourceEngine : MonoBehaviour
             if (multiplier == 0) {
                 barScroller.Stop();
             }
-            else if (multiplier > 0) {
+            else if (multiplier > 0 && _stamina < MaxStamina) {
                 var clampedMultiplier = Mathf.Clamp(multiplier, 1f, 3f);
                 barScroller.Scroll(PatternScroller.RIGHT, Mathf.CeilToInt(clampedMultiplier));
             }
@@ -404,7 +420,7 @@ public class ResourceEngine : MonoBehaviour
     }
 
     public bool HasVolition() {
-        if (_volition > volitionUseRate) {
+        if (_volition > volitionUseRate * Time.deltaTime && exhaustion.CurrentLevel == 0) {
             return true;
         }
         return false;

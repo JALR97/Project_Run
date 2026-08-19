@@ -5,6 +5,7 @@ using UnityEngine;
 public class Crash : MonoBehaviour
 {
     [SerializeField] PlayerController player;
+    [SerializeField] ResourceEngine engine;
     [SerializeField] MeshRenderer renderer;
     [SerializeField] Material baseMat;
     [SerializeField] Material flashMat;
@@ -20,7 +21,7 @@ public class Crash : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Runner") && player.GetPlayerState() == PlayerController.PlayerState.Running) {
-            if (Time.time <= graceUntil) {
+            if (Time.time <= graceUntil || engine.GetSpeedCategory() == ResourceEngine.SpeedCategory.WALKING) {
                 return;
             }
             crashed = true;
